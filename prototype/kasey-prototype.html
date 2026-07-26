@@ -1,0 +1,3140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kasey</title>
+<meta name="theme-color" id="themeColor" content="#F1F3EF">
+<link rel='icon' href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="18" y1="28" x2="52" y2="92"><stop offset="0" stop-color="%23FDE07A"/><stop offset=".52" stop-color="%23F0A02E"/><stop offset="1" stop-color="%23C4610F"/></linearGradient><linearGradient id="t" gradientUnits="userSpaceOnUse" x1="57" y1="38" x2="102" y2="84"><stop offset="0" stop-color="%236EE7D8"/><stop offset=".55" stop-color="%233BB4CE"/><stop offset="1" stop-color="%234A8FD4"/></linearGradient></defs><rect width="120" height="120" rx="27" fill="%23FBF3E4"/><g fill="none" stroke="url(%23g)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M25,32V88"/><path d="M42,32L28,60L44,88"/></g><path d="M96,42.8A21,21 0 1 0 96,77.2" fill="none" stroke="url(%23t)" stroke-width="12" stroke-linecap="round"/><circle cx="84" cy="60" r="10.5" fill="%235FD6C4"/></svg>'><defs><linearGradient id="g" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="%23FDE07A"/><stop offset=".52" stop-color="%23F0A02E"/><stop offset="1" stop-color="%23C4610F"/></linearGradient><linearGradient id="t" x1=".1" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%236EE7D8"/><stop offset=".55" stop-color="%233BB4CE"/><stop offset="1" stop-color="%234A8FD4"/></linearGradient></defs><rect width="120" height="120" rx="27" fill="%23FBF3E4"/><g fill="none" stroke="url(%23g)" stroke-width="13" stroke-linecap="round"><path d="M28,32V88"/><path d="M52,33L31,60"/><path d="M32,58L54,88"/></g><path d="M94.6,42A22,22 0 1 0 94.6,78" fill="none" stroke="url(%23t)" stroke-width="13" stroke-linecap="round"/><circle cx="82" cy="60" r="10.5" fill="%235FD6C4"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* light — verified against WCAG AA */
+    --bg:#E6E9E4;
+    --paper:#F1F3EF; --card:#FFFFFF;
+    --ink:#16201F; --ink-2:#3C4A48; --ink-3:#5E6D69;
+    --line:#DDE2DC;          /* decorative divider */
+    --edge:#7C8A84;          /* interactive border, 3.6:1 */
+    --line-2:#EDF0EC;
+    --deep:#2C574B; --on-deep:#FFFFFF; --deep-soft:#E4EDE8; --on-deep-soft:var(--on-deep-soft);
+    --good:#3C7554; --good-soft:#E8F1EA; --on-good-soft:var(--on-good-soft);
+    --warn:#A8503C; --warn-soft:#F6E7E3; --on-warn-soft:var(--on-warn-soft);
+    /* sequential recovery ramp — one hue, varies by lightness */
+    --s1:#BBD2C7; --s2:#8FB5A5; --s3:#639784; --s4:#3E7864; --s5:#25584A;
+    --track:#E4E9E5;
+    --shadow:0 1px 2px rgba(22,32,31,.05), 0 6px 20px rgba(22,32,31,.07);
+    --r:12px; --tap:48px;
+  }
+  [data-theme="dark"]{
+    --bg:#0D1111;
+    --paper:#151A19; --card:#1E2524;
+    --ink:#E4EAE7; --ink-2:#B9C4C0; --ink-3:#97A5A1;
+    --line:#2A3332;
+    --edge:#6E7B77;          /* 3.5:1 */
+    --line-2:#232B2A;
+    --deep:#6FC2A3; --on-deep:#0C1714; --deep-soft:#1B2E28; --on-deep-soft:#8FD6B8;
+    --good:#6FC2A3; --good-soft:#172A23; --on-good-soft:#8FD6B8;
+    --warn:#E0906E; --warn-soft:#33201A; --on-warn-soft:#F0AE90;
+    --s1:#2F5346; --s2:#3E7864; --s3:#559A80; --s4:#74BC9C; --s5:#9BD9BC;
+    --track:#2A3332;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 22px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Public Sans",system-ui,-apple-system,sans-serif;
+    font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  input,textarea,select{font-family:inherit;font-size:16px;color:inherit;} /* 16px stops iOS zoom */
+  :focus-visible{outline:2px solid var(--deep);outline-offset:2px;border-radius:4px;}
+
+  #app{
+    max-width:460px;margin:0 auto;min-height:100%;background:var(--paper);
+    display:flex;flex-direction:column;position:relative;
+    box-shadow:0 0 60px rgba(22,32,31,.10);
+  }
+  .topbar{
+    flex:none;padding:16px 18px 12px;background:var(--paper);
+    border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .topbar h1{font-family:"Newsreader",serif;font-weight:400;font-size:25px;margin:0;letter-spacing:-.01em;line-height:1.1;}
+  .topbar .sub{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);display:block;margin-top:2px;}
+  .topbtn{font-size:14px;font-weight:600;color:var(--deep);padding:10px 4px;flex:none;min-height:var(--tap);display:flex;align-items:center;}
+  main{flex:1;padding:14px 18px 100px;}
+  body.has-dock main{padding-bottom:160px;}
+
+  .tabbar{
+    position:sticky;bottom:0;flex:none;display:grid;grid-template-columns:repeat(4,1fr);
+    background:rgba(241,243,239,.96);backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);z-index:20;
+  }
+  .tab{
+    padding:10px 4px calc(10px + env(safe-area-inset-bottom));
+    text-align:center;font-size:11.5px;font-weight:600;color:var(--ink-3);min-height:var(--tap);
+  }
+  .tab .ic{display:block;font-size:17px;line-height:1.3;margin-bottom:1px;}
+  .tab[aria-current="true"]{color:var(--deep);}
+
+  /* two-button dock, thumb zone */
+  .dock{
+    position:fixed;left:50%;transform:translateX(-50%);
+    bottom:calc(72px + env(safe-area-inset-bottom));
+    width:min(424px,calc(100% - 36px));z-index:25;
+    display:grid;grid-template-columns:1fr 1.25fr;gap:9px;
+  }
+  .dock.one{grid-template-columns:1fr;}
+  .dock button{
+    min-height:56px;border-radius:var(--r);font-weight:600;font-size:15.5px;
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    box-shadow:0 5px 18px rgba(22,32,31,.16);
+  }
+  .dock .b-plain{background:var(--deep);color:var(--on-deep);}
+  .tab{position:relative;}
+  .tab .pip{
+    position:absolute;top:6px;left:calc(50% + 9px);
+    width:7px;height:7px;border-radius:50%;background:var(--warn);
+    box-shadow:0 0 0 2px var(--paper);
+  }
+  .dock .b-good{background:var(--card);color:var(--good);border:1.5px solid var(--good);}
+  .dock .b-good[aria-pressed="true"]{background:var(--good-soft);}
+  .dock .b-hard{background:var(--deep);color:var(--on-deep);}
+  .dock button:active{transform:scale(.98);}
+
+  /* ---------- brand ---------- */
+  .kc{display:block;flex:none;}
+  .lockup{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:26px 18px 24px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r);margin-bottom:18px;
+  }
+  .lockup .kc{width:76px;height:76px;border-radius:18px;box-shadow:var(--shadow);}
+  .wordmark{
+    font-family:"Fraunces",Newsreader,serif;font-weight:600;font-size:31px;
+    letter-spacing:-.015em;color:var(--ink);margin:15px 0 0;line-height:1;
+  }
+  [data-theme="dark"] .wordmark{color:var(--ink);}
+  .lockup .tag{
+    font-family:"Newsreader",serif;font-style:italic;font-weight:300;
+    font-size:16px;color:var(--ink-3);margin-top:8px;
+  }
+  .lockup .ver{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-3);margin-top:14px;
+  }
+  .p-masthead{display:flex;align-items:center;gap:11px;margin-bottom:13px;}
+  .p-masthead .kc{width:30px;height:30px;}
+  .p-masthead .nm{
+    font-family:"Fraunces",Newsreader,serif;font-weight:600;font-size:17px;
+    color:#22506B;letter-spacing:-.01em;
+  }
+  .p-masthead .rule{flex:1;height:1px;background:#DDE2DC;}
+  .empty .kc{width:58px;height:58px;margin:0 auto 18px;border-radius:14px;opacity:.9;}
+
+  /* ---------- summary strip ---------- */
+  .strip{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r);padding:15px;margin-bottom:16px;}
+  .strip .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:10px;}
+  .strip-row{display:flex;gap:16px;}
+  .strip-stat{flex:1;min-width:0;}
+  .strip-stat .n{font-family:"IBM Plex Mono",monospace;font-size:21px;font-weight:600;line-height:1;display:block;letter-spacing:-.02em;}
+  .strip-stat .n small{font-size:11px;font-weight:400;color:var(--ink-3);margin-left:3px;letter-spacing:0;}
+  .strip-stat .t{font-size:11.5px;color:var(--ink-3);display:block;margin-top:5px;line-height:1.35;}
+  .strip .go{margin-top:12px;padding-top:11px;border-top:1px solid var(--line-2);
+    font-size:12.5px;color:var(--deep);font-weight:600;display:flex;justify-content:space-between;}
+  .ratio-lab{display:flex;justify-content:space-between;margin-top:6px;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3);letter-spacing:.06em;}
+  .ramp{display:flex;align-items:center;gap:8px;margin:10px 0 0;}
+  .ramp .swatches{display:flex;gap:2px;flex:none;}
+  .ramp .swatches i{width:13px;height:7px;border-radius:2px;display:block;}
+  .ramp .cap{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--ink-3);letter-spacing:.06em;}
+  .ratio{height:6px;border-radius:3px;background:var(--good-soft);overflow:hidden;margin-top:12px;display:flex;}
+  .ratio span{height:100%;display:block;}
+
+  /* ---------- entries ---------- */
+  .daylabel{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-3);margin:18px 0 9px;}
+  .daylabel:first-child{margin-top:2px;}
+  .entry{width:100%;text-align:left;display:block;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--r);padding:13px 14px;margin-bottom:9px;min-height:var(--tap);}
+  .entry:active{background:#FAFBF9;}
+  .entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .entry-trigger{font-weight:600;font-size:15px;line-height:1.3;}
+  .entry-time{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);flex:none;}
+  .entry-what{font-size:13px;color:var(--ink-2);margin:3px 0 10px;}
+  .recovery{display:flex;align-items:center;gap:9px;}
+  .rbar{height:7px;border-radius:4px;flex:1;background:var(--track);overflow:hidden;}
+  .rfill{height:100%;border-radius:4px;display:block;}
+  .rmin{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:var(--ink-2);flex:none;min-width:46px;text-align:right;}
+  .rtool{font-size:12px;color:var(--deep);margin-top:8px;display:flex;align-items:center;gap:6px;}
+  .rtool .dot{width:6px;height:6px;border-radius:50%;background:var(--deep);flex:none;}
+  .rtool.none{color:var(--warn);}
+  .rtool.none .dot{background:var(--warn);}
+  .entry-note{font-size:12.5px;color:var(--ink-3);margin-top:8px;font-style:italic;}
+  .stage-tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.08em;
+    text-transform:uppercase;border-radius:5px;padding:2px 6px;flex:none;
+    background:var(--deep-soft);color:var(--on-deep-soft);}
+  .stage-tag.s4{background:var(--warn-soft);color:var(--on-warn-soft);}
+  .stage-tag.s1{background:var(--good-soft);color:var(--on-good-soft);}
+  .src-tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:5px;padding:1px 5px;flex:none;}
+
+  .goodrow{width:100%;text-align:left;display:flex;align-items:center;gap:11px;
+    background:var(--good-soft);border:1px solid var(--line);
+    border-radius:10px 10px 4px 4px;
+    padding:12px 14px;margin-bottom:5px;min-height:var(--tap);}
+  .goodrow.has-below{border-bottom-left-radius:4px;border-bottom-right-radius:4px;}
+  .day-stack{border-left:2px solid var(--good-soft);padding-left:9px;margin-bottom:14px;}
+  .day-stack.no-verdict{border-left-color:transparent;padding-left:0;}
+  .verdict-note{font-size:12.5px;color:var(--ink-3);margin:0 0 9px 3px;font-style:italic;}
+  .goodrow .dot{width:8px;height:8px;border-radius:50%;background:var(--good);flex:none;}
+  .goodrow .txt{font-size:14.5px;font-weight:600;color:var(--on-good-soft);}
+  .goodrow .note{font-size:13px;color:var(--on-good-soft);font-weight:400;}
+  .goodrow .t{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--on-good-soft);flex:none;}
+
+  .mhead{display:flex;width:100%;align-items:center;gap:10px;text-align:left;
+    padding:13px 2px;border-bottom:1px solid var(--line);margin-bottom:2px;min-height:var(--tap);}
+  .mhead .caret{font-size:11px;color:var(--ink-3);flex:none;width:12px;transition:transform .16s ease;display:inline-block;}
+  .mhead[aria-expanded="true"] .caret{transform:rotate(90deg);}
+  .mhead .name{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:600;}
+  .mhead .cnt{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);}
+  .mgroup{padding-top:10px;}
+
+  .empty{text-align:center;padding:44px 20px;color:var(--ink-3);}
+  .empty h2{font-family:"Newsreader",serif;font-weight:400;font-size:23px;color:var(--ink);margin:0 0 8px;}
+  .empty p{font-size:14.5px;margin:0 auto 20px;max-width:290px;line-height:1.55;}
+
+  /* ---------- form ---------- */
+  .field{margin-bottom:22px;}
+  .field > label,.flabel{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:9px;}
+  .hint{font-weight:400;color:var(--ink-3);font-size:12px;}
+  input[type="date"],input[type="time"],input[type="text"],textarea{
+    background:var(--card);border:1px solid var(--edge);border-radius:10px;
+    padding:13px 12px;width:100%;color:var(--ink);min-height:var(--tap);}
+  textarea{resize:vertical;min-height:70px;line-height:1.5;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{border:1px solid var(--edge);background:var(--card);border-radius:22px;
+    padding:0 15px;min-height:44px;display:inline-flex;align-items:center;
+    font-size:14px;color:var(--ink-2);transition:background .12s ease,border-color .12s ease,color .12s ease;}
+  .chip[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:var(--on-deep);font-weight:600;}
+  .chip.nothing[aria-pressed="true"]{background:var(--warn);border-color:var(--warn);}
+  .chip.add{border-style:dashed;color:var(--ink-3);}
+  .chip.unknown[aria-pressed="true"]{background:var(--ink-3);border-color:var(--ink-3);}
+  .addrow{display:flex;gap:7px;margin-top:9px;}
+  .addrow input{flex:1;}
+  .addrow button{background:var(--deep);color:var(--on-deep);border-radius:10px;padding:0 17px;font-weight:600;font-size:14px;flex:none;min-height:var(--tap);}
+
+  /* stage picker — the primary control */
+  .stages{display:flex;flex-direction:column;gap:8px;}
+  .stage{display:flex;align-items:flex-start;gap:12px;text-align:left;
+    border:1px solid var(--edge);background:var(--card);border-radius:11px;
+    padding:13px 14px;min-height:56px;}
+  .stage .num{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    color:var(--ink-3);flex:none;width:14px;padding-top:2px;}
+  .stage .body{flex:1;min-width:0;}
+  .stage .nm{font-size:15px;font-weight:600;line-height:1.3;display:block;}
+  .stage .ds{font-size:12.5px;color:var(--ink-3);line-height:1.45;display:block;margin-top:2px;}
+  .stage[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);}
+  .stage[aria-pressed="true"] .nm,.stage[aria-pressed="true"] .num{color:var(--on-deep);}
+  .stage[aria-pressed="true"] .ds{color:var(--on-deep);opacity:.8;}
+  .stage.s1[aria-pressed="true"]{background:var(--good);border-color:var(--good);}
+  .stage.s4[aria-pressed="true"]{background:var(--warn);border-color:var(--warn);}
+
+  .slider-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 14px 12px;}
+  .slider-val{font-family:"IBM Plex Mono",monospace;font-size:28px;font-weight:600;line-height:1;}
+  .slider-val span{font-size:13px;font-weight:400;color:var(--ink-3);margin-left:5px;}
+  .slider-preview{height:7px;border-radius:4px;background:var(--track);overflow:hidden;margin:12px 0 8px;}
+  input[type=range]{width:100%;accent-color:var(--deep);height:32px;}
+  .quickmins{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap;}
+  .quickmins button{border:1px solid var(--line);border-radius:9px;padding:0 13px;min-height:44px;
+    display:inline-flex;align-items:center;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);background:var(--card);}
+
+  .more-toggle{width:100%;text-align:center;color:var(--deep);font-weight:600;font-size:14.5px;
+    padding:14px;border:1px dashed var(--line);border-radius:11px;min-height:var(--tap);margin-bottom:8px;}
+
+  .banner{border-radius:10px;padding:12px 13px;font-size:13px;line-height:1.5;margin-bottom:18px;}
+  .banner.info{background:var(--deep-soft);color:var(--on-deep-soft);}
+  .banner.warn{background:var(--warn-soft);color:var(--on-warn-soft);}
+  .banner.good{background:var(--good-soft);color:var(--on-good-soft);}
+  .banner button{font-weight:700;text-decoration:underline;margin-left:6px;}
+
+  .btn-primary{width:100%;background:var(--deep);color:var(--on-deep);font-weight:600;font-size:16px;
+    padding:16px;border-radius:var(--r);text-align:center;margin-top:6px;min-height:56px;}
+  .btn-ghost{width:100%;background:var(--card);color:var(--warn);font-weight:600;font-size:15px;
+    padding:15px;border-radius:var(--r);text-align:center;border:1px solid var(--line);margin-top:10px;min-height:var(--tap);}
+  .btn-quiet{width:100%;background:var(--card);color:var(--ink-2);font-weight:600;font-size:14.5px;
+    padding:14px;border-radius:10px;text-align:center;border:1px solid var(--line);margin-bottom:9px;min-height:var(--tap);}
+  .meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);line-height:1.8;margin-top:20px;}
+
+  /* ---------- pages ---------- */
+  .paper{
+    background:#FFFFFF;border:1px solid #DDE2DC;border-radius:8px;padding:24px 22px;
+    box-shadow:0 1px 3px rgba(0,0,0,.10), 0 10px 30px rgba(0,0,0,.10);
+    --ink:#16201F; --ink-2:#3C4A48; --ink-3:#5E6D69;
+    --line:#DDE2DC; --deep:#2C574B; --warn:#A8503C;
+    --good-soft:#E8F1EA; --on-good-soft:#2F5E44;
+    color:#16201F;
+  }
+  .p-head{padding-bottom:15px;border-bottom:2px solid var(--ink);margin-bottom:20px;}
+  .p-head h2{font-family:"Newsreader",serif;font-weight:400;font-size:27px;margin:0 0 3px;letter-spacing:-.01em;}
+  .p-head .who{font-size:13px;color:var(--ink-2);}
+  .p-head .gen{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);margin-top:9px;line-height:1.7;}
+  .p-block{margin-bottom:22px;}
+  .p-block h3{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--deep);margin:0 0 10px;font-weight:600;}
+  .p-block.warn h3{color:var(--warn);}
+  .p-block.hero{background:var(--good-soft);border-radius:10px;padding:16px 17px;margin:-4px 0 22px;}
+  .p-block.hero h3{color:var(--on-good-soft);}
+  .p-block.hero p{color:var(--on-good-soft);}
+  .p-list{list-style:none;margin:0;padding:0;}
+  .p-list li{display:flex;justify-content:space-between;gap:14px;align-items:baseline;
+    padding:6px 0;border-bottom:1px dotted var(--line);font-size:14.5px;}
+  .p-list li:last-child{border-bottom:none;}
+  .p-list .val{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);flex:none;}
+  .p-list .val.good{color:var(--deep);font-weight:600;}
+  .p-prose{font-size:14px;color:var(--ink-2);margin:0;white-space:pre-wrap;}
+  .p-foot{margin-top:22px;padding-top:12px;border-top:1px solid var(--line);
+    font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3);line-height:1.7;}
+  .p-stage{display:flex;gap:11px;padding:9px 0;border-bottom:1px dotted var(--line);align-items:flex-start;}
+  .p-stage:last-child{border-bottom:none;}
+  .p-stage .n{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:var(--deep);flex:none;width:14px;padding-top:2px;}
+  .p-stage .b{flex:1;}
+  .p-stage .nm{font-size:14.5px;font-weight:600;display:block;}
+  .p-stage .ds{font-size:13px;color:var(--ink-2);display:block;margin-top:1px;}
+  .p-tbl{width:100%;border-collapse:collapse;font-size:14px;}
+  .p-tbl td{padding:6px 0;border-bottom:1px dotted var(--line);}
+  .p-tbl td:last-child{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);white-space:nowrap;padding-left:12px;}
+  .p-tbl tr:last-child td{border-bottom:none;}
+
+  .seg{display:grid;background:var(--line-2);border-radius:10px;padding:3px;margin-bottom:18px;gap:2px;}
+  .seg button{padding:11px 6px;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--ink-3);text-align:center;line-height:1.2;min-height:44px;}
+  .seg button[aria-pressed="true"]{background:var(--card);color:var(--deep);box-shadow:0 1px 2px rgba(22,32,31,.08);}
+
+  .med{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:14px 15px;margin-bottom:9px;}
+  .med.past{opacity:.72;padding:11px 15px;}
+  .med-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .med-name{font-size:16px;font-weight:600;line-height:1.3;}
+  .med-dose{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--deep);
+    display:block;margin-top:2px;}
+  .med-since{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);flex:none;}
+  .med-meta{font-size:12.5px;color:var(--ink-3);margin-top:6px;}
+  .med-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+  .med-acts button{border:1px solid var(--edge);border-radius:9px;min-height:42px;
+    font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--card);}
+  .mk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;margin-bottom:12px;}
+  .mk-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:2px;}
+  .mk-top h4{font-size:16px;margin:0;font-weight:600;line-height:1.3;}
+  .mk-top .date{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);flex:none;}
+  .cmp{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:14px 0 0;}
+  .cmp-col{text-align:center;}
+  .cmp-col .lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:6px;}
+  .cmp-col .v{font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:600;line-height:1.1;}
+  .cmp-col .v small{font-size:10.5px;font-weight:400;color:var(--ink-3);display:block;margin-top:3px;letter-spacing:0;}
+  .cmp-arrow{font-size:15px;color:var(--ink-3);}
+  .cmp-row{border-top:1px solid var(--line-2);padding-top:13px;margin-top:13px;}
+  .cmp-lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600;}
+  .mk-thin{font-size:12.5px;color:var(--ink-3);line-height:1.55;margin:12px 0 0;}
+  .mk-del{font-size:12.5px;color:var(--warn);font-weight:600;margin-top:12px;padding:8px 0;min-height:40px;}
+
+  /* ---------- reading ---------- */
+  .read-intro{font-family:"Newsreader",serif;font-size:19px;line-height:1.45;color:var(--ink-2);margin:2px 2px 22px;font-weight:300;}
+  .art-card{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px;}
+  .art-card:active{background:#FAFBF9;}
+  .art-cover{padding:20px 18px 18px;color:#fff;position:relative;overflow:hidden;}
+  .art-cover .mark{position:absolute;right:-12px;bottom:-30px;font-family:"Newsreader",serif;font-size:110px;line-height:1;opacity:.14;pointer-events:none;}
+  .art-cover .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.82;display:block;margin-bottom:10px;}
+  .art-cover h2{font-family:"Newsreader",serif;font-weight:400;font-size:24px;line-height:1.18;margin:0;letter-spacing:-.012em;position:relative;max-width:92%;}
+  .art-meta{padding:14px 18px 16px;}
+  .art-meta .dek{font-size:14px;color:var(--ink-2);line-height:1.5;margin:0 0 10px;}
+  .art-meta .foot{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);display:flex;gap:10px;align-items:center;}
+  .art-meta .foot .go{margin-left:auto;color:var(--deep);font-weight:600;}
+
+  .reader{position:fixed;inset:0;z-index:70;background:var(--card);display:none;flex-direction:column;}
+  .reader.open{display:flex;}
+  .reader-progress{position:absolute;top:0;left:0;right:0;height:2px;background:var(--line-2);z-index:3;}
+  .reader-progress span{display:block;height:100%;width:0;background:var(--deep);}
+  .reader-head{flex:none;display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--card);max-width:460px;width:100%;margin:0 auto;}
+  .reader-crumb{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-left:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:58%;}
+  .reader-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .reader-inner{max-width:460px;margin:0 auto;padding:0 22px 80px;}
+  .a-hero{padding:30px 0 24px;border-bottom:1px solid var(--line);margin-bottom:26px;}
+  .a-hero .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--deep);display:block;margin-bottom:12px;}
+  .a-hero h1{font-family:"Newsreader",serif;font-weight:400;font-size:33px;line-height:1.14;letter-spacing:-.018em;margin:0 0 14px;}
+  .a-hero .dek{font-family:"Newsreader",serif;font-weight:300;font-style:italic;font-size:18px;line-height:1.45;color:var(--ink-2);margin:0 0 16px;}
+  .a-hero .stamp{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);line-height:1.8;}
+  .a-p{font-size:16.5px;line-height:1.68;color:var(--ink);margin:0 0 17px;}
+  .a-h{font-family:"Newsreader",serif;font-weight:500;font-size:23px;line-height:1.22;letter-spacing:-.01em;margin:34px 0 13px;}
+  .a-sh{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--deep);margin:26px 0 9px;}
+  .a-ul{margin:0 0 18px;padding-left:20px;}
+  .a-ul li{font-size:16px;line-height:1.6;margin-bottom:9px;}
+  .a-call{background:var(--deep-soft);border-radius:12px;padding:16px 17px;margin:22px 0;}
+  .a-call .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);display:block;margin-bottom:8px;}
+  .a-call p{margin:0;font-size:15.5px;line-height:1.6;color:var(--on-deep-soft);}
+  .a-call.warn{background:var(--warn-soft);}
+  .a-call.warn .lab{color:var(--warn);}
+  .a-call.warn p{color:var(--on-warn-soft);}
+  .a-quote{font-family:"Newsreader",serif;font-weight:300;font-size:22px;line-height:1.36;color:var(--ink);border-left:2px solid var(--deep);padding-left:18px;margin:26px 0;letter-spacing:-.008em;}
+  .a-age{border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin-bottom:11px;}
+  .a-age .band{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--deep);display:block;margin-bottom:3px;}
+  .a-age h4{font-size:16px;margin:0 0 7px;font-weight:600;line-height:1.3;}
+  .a-age p{margin:0;font-size:14.5px;line-height:1.55;color:var(--ink-2);}
+  .a-rule{border:none;border-top:1px solid var(--line);margin:34px 0 28px;}
+  .a-src{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);}
+  .a-src h5{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 11px;font-weight:600;}
+  .a-src ul{margin:0;padding-left:17px;}
+  .a-src li{font-size:12.5px;line-height:1.6;color:var(--ink-3);margin-bottom:7px;}
+  .a-disc{font-size:12.5px;line-height:1.6;color:var(--ink-3);margin-top:20px;font-style:italic;}
+
+  /* ---------- entry detail ---------- */
+  .d-hero{padding:26px 0 20px;border-bottom:1px solid var(--line);margin-bottom:22px;}
+  .d-hero .when{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:9px;}
+  .d-hero h1{font-family:"Newsreader",serif;font-weight:400;font-size:30px;line-height:1.16;letter-spacing:-.016em;margin:0;}
+  .d-sec{margin-bottom:22px;}
+  .d-sec h4{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);margin:0 0 9px;font-weight:600;}
+  .d-sec p{margin:0;font-size:16px;line-height:1.55;color:var(--ink);}
+  .d-sec .quiet{color:var(--ink-3);font-style:italic;}
+  .d-pills{display:flex;flex-wrap:wrap;gap:6px;}
+  .d-pill{background:var(--deep-soft);color:var(--on-deep-soft);border-radius:20px;padding:8px 14px;font-size:14px;font-weight:500;}
+  .d-pill.warn{background:var(--warn-soft);color:var(--on-warn-soft);}
+  .d-rec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;}
+  .d-rec .big{font-family:"IBM Plex Mono",monospace;font-size:30px;font-weight:600;line-height:1;letter-spacing:-.02em;}
+  .d-rec .big small{font-size:13px;font-weight:400;color:var(--ink-3);margin-left:5px;letter-spacing:0;}
+  .d-rec .cmp2{font-size:12.5px;color:var(--ink-3);margin-top:10px;}
+  .d-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:28px;}
+  .d-actions button{padding:15px;border-radius:var(--r);font-weight:600;font-size:15px;text-align:center;min-height:52px;}
+  .d-edit{background:var(--deep);color:var(--on-deep);}
+  .d-del{background:var(--card);color:var(--warn);border:1px solid var(--line);}
+
+  /* ---------- sheet: full height, sticky bottom action ---------- */
+  .sheet{position:fixed;inset:0;z-index:60;display:none;}
+  .sheet.open{display:block;}
+  .sheet-bg{position:absolute;inset:0;background:rgba(22,32,31,.42);}
+  .sheet-inner{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:0;
+    width:100%;max-width:460px;
+    height:100%;height:100dvh;                 /* dvh keeps the keyboard from covering fields */
+    background:var(--paper);display:flex;flex-direction:column;
+  }
+  .sheet-head{flex:none;display:flex;align-items:center;justify-content:space-between;
+    padding:12px 18px;border-bottom:1px solid var(--line);gap:12px;background:var(--paper);}
+  .sheet-head h2{font-family:"Newsreader",serif;font-weight:400;font-size:21px;margin:0;}
+  .sheet-body{flex:1;overflow-y:auto;padding:16px 18px 26px;-webkit-overflow-scrolling:touch;}
+  .sheet-foot{
+    flex:none;padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+    background:var(--paper);border-top:1px solid var(--line);
+  }
+  .sheet-foot .btn-primary{margin-top:0;}
+  .autosave{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3);
+    text-align:center;margin-top:9px;display:block;}
+
+  .onb{position:fixed;inset:0;z-index:95;background:var(--paper);display:none;}
+  .onb.open{display:block;}
+  .onb-inner{max-width:460px;margin:0 auto;height:100%;height:100dvh;display:flex;flex-direction:column;}
+  .onb-body{flex:1;overflow-y:auto;padding:34px 22px 20px;-webkit-overflow-scrolling:touch;}
+  .onb-foot{flex:none;padding:14px 22px calc(16px + env(safe-area-inset-bottom));
+    border-top:1px solid var(--line);background:var(--paper);}
+  .onb-skip{width:100%;text-align:center;color:var(--ink-3);font-size:14px;
+    padding:14px 0 2px;min-height:44px;}
+  .onb .kc{width:66px;height:66px;border-radius:16px;box-shadow:var(--shadow);margin-bottom:22px;}
+  .onb h1{font-family:"Fraunces",Newsreader,serif;font-weight:600;font-size:29px;
+    line-height:1.18;letter-spacing:-.015em;margin:0 0 12px;}
+  .onb .lede{font-family:"Newsreader",serif;font-weight:300;font-size:18.5px;
+    line-height:1.5;color:var(--ink-2);margin:0 0 24px;}
+  .onb .step{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--deep);display:block;margin-bottom:14px;}
+  .onb .why{font-size:13.5px;color:var(--ink-3);line-height:1.55;margin:18px 0 0;}
+  .onb-preview{background:#fff;border:1px solid #DDE2DC;border-radius:8px;
+    padding:18px 18px 16px;box-shadow:var(--shadow);color:#16201F;margin-top:6px;}
+  .onb-preview .pnm{font-family:"Newsreader",serif;font-size:21px;margin:0 0 2px;}
+  .onb-preview .pwho{font-size:12px;color:#5E6D69;margin-bottom:13px;}
+  .onb-preview .plab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:#2F5E44;margin:0 0 6px;font-weight:600;}
+  .onb-preview .pln{font-size:14px;line-height:1.5;margin:0 0 4px;color:#3C4A48;}
+  .ask{position:fixed;inset:0;z-index:90;display:none;}
+  .ask.open{display:block;}
+  .ask-bg{position:absolute;inset:0;background:rgba(10,16,15,.55);}
+  .ask-box{
+    position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+    width:100%;max-width:460px;background:var(--paper);
+    border-top-left-radius:18px;border-top-right-radius:18px;
+    padding:24px 20px calc(20px + env(safe-area-inset-bottom));
+    box-shadow:0 -8px 40px rgba(0,0,0,.3);
+  }
+  .ask-box p{margin:0 0 20px;font-size:16.5px;line-height:1.5;color:var(--ink);}
+  .ask-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+  .ask-row button{min-height:52px;border-radius:var(--r);font-weight:600;font-size:15.5px;}
+  .ask-no{background:var(--card);color:var(--ink-2);border:1px solid var(--edge);}
+  .ask-yes{background:var(--warn);color:#fff;}
+  .toast{position:fixed;bottom:calc(140px + env(safe-area-inset-bottom));left:50%;
+    transform:translateX(-50%) translateY(12px);background:var(--ink);color:#fff;
+    font-size:13.5px;font-weight:500;padding:12px 18px;border-radius:24px;z-index:80;
+    opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease;
+    display:flex;align-items:center;gap:14px;max-width:calc(100% - 36px);}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+  .toast button{color:#8FD6B4;font-weight:700;flex:none;padding:4px 0;}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+  @media print{
+    body{background:#fff;}
+    #app{box-shadow:none;max-width:none;}
+    .topbar,.tabbar,.dock,.noprint{display:none!important;}
+    .p-masthead{display:flex!important;}
+    main{padding:0;}
+    .paper{border:none;box-shadow:none;padding:0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ kc mark · from Idea Vault §8 ============
+     Gold K beside a teal C, calm face resting in the bowl of the C.
+     kcTile   — app icon master, cream tile
+     kcPlain  — transparent, for the document masthead
+     kcSmall  — 40px variant: features dropped, face reads as a plain dot
+============================================================ -->
+<svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- userSpaceOnUse: one ribbon of gradient across the whole letter.
+         objectBoundingBox gives each stroke its own ramp, and drops the vertical
+         stem entirely because a vertical line has a zero-width bounding box. -->
+    <linearGradient id="kcGold" gradientUnits="userSpaceOnUse" x1="18" y1="28" x2="52" y2="92">
+      <stop offset="0%"   stop-color="#FDE07A"/>
+      <stop offset="52%"  stop-color="#F0A02E"/>
+      <stop offset="100%" stop-color="#C4610F"/>
+    </linearGradient>
+    <linearGradient id="kcTeal" gradientUnits="userSpaceOnUse" x1="57" y1="38" x2="102" y2="84">
+      <stop offset="0%"   stop-color="#6EE7D8"/>
+      <stop offset="55%"  stop-color="#3BB4CE"/>
+      <stop offset="100%" stop-color="#4A8FD4"/>
+    </linearGradient>
+    <g id="kcLetters">
+      <g fill="none" stroke="url(#kcGold)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M25,32 V88"/>
+        <path d="M42,32 L28,60 L44,88"/>
+      </g>
+      <path d="M96,42.8 A21,21 0 1 0 96,77.2" fill="none" stroke="url(#kcTeal)"
+            stroke-width="12" stroke-linecap="round"/>
+    </g>
+    <g id="kcFace">
+      <circle cx="84" cy="60" r="10.5" fill="#5FD6C4"/>
+      <g fill="none" stroke="#22506B" stroke-width="2.1" stroke-linecap="round">
+        <path d="M77,58.3 q3,-3 6,0"/>
+        <path d="M85,58.3 q3,-3 6,0"/>
+        <path d="M80,64.2 q4,3.6 8,0"/>
+      </g>
+    </g>
+  </defs>
+
+  <symbol id="kcPlain" viewBox="0 0 120 120">
+    <use href="#kcLetters"/><use href="#kcFace"/>
+  </symbol>
+
+  <symbol id="kcTile" viewBox="0 0 120 120">
+    <rect x="0" y="0" width="120" height="120" rx="27" fill="#FBF3E4"/>
+    <use href="#kcLetters"/><use href="#kcFace"/>
+  </symbol>
+
+  <symbol id="kcSmall" viewBox="0 0 120 120">
+    <rect x="0" y="0" width="120" height="120" rx="27" fill="#FBF3E4"/>
+    <use href="#kcLetters"/>
+    <circle cx="84" cy="60" r="10.5" fill="#5FD6C4"/>
+  </symbol>
+</svg>
+
+<div id="app">
+  <div class="topbar">
+    <div>
+      <h1 id="topTitle">Log</h1>
+      <span class="sub" id="topSub">—</span>
+    </div>
+    <button class="topbtn" id="topAction" type="button" hidden></button>
+  </div>
+
+  <main id="view"></main>
+
+  <div class="dock" id="dock"></div>
+
+  <nav class="tabbar">
+    <button class="tab" data-tab="log" aria-current="true" type="button"><span class="ic">☰</span>Log</button>
+    <button class="tab" data-tab="read" aria-current="false" type="button"><span class="ic">✧</span>Read</button>
+    <button class="tab" data-tab="page" aria-current="false" type="button"><span class="ic">◫</span>Pages</button>
+    <button class="tab" data-tab="settings" aria-current="false" type="button"><span class="ic">⚙</span>Setup</button>
+  </nav>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-inner">
+    <div class="sheet-head">
+      <button class="topbtn" data-close type="button">Close</button>
+      <h2 id="sheetTitle">Add an entry</h2>
+      <span style="width:44px"></span>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+    <div class="sheet-foot" id="sheetFoot">
+      <button class="btn-primary" id="sheetSave" type="button">Save entry</button>
+      <span class="autosave" id="autosaveNote">Your draft is kept if you get interrupted</span>
+    </div>
+  </div>
+</div>
+
+<div class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+  <div class="reader-progress"><span id="readerBar"></span></div>
+  <div class="reader-head">
+    <button class="topbtn" id="readerBack" type="button">‹ Reading</button>
+    <span class="reader-crumb" id="readerCrumb"></span>
+  </div>
+  <div class="reader-body" id="readerBody"></div>
+</div>
+
+<div class="reader" id="detail" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+  <div class="reader-head">
+    <button class="topbtn" id="detailBack" type="button">‹ Log</button>
+    <span class="reader-crumb" id="detailCrumb"></span>
+  </div>
+  <div class="reader-body" id="detailBody"></div>
+</div>
+
+<div class="onb" id="onb" role="dialog" aria-modal="true" aria-labelledby="onbTitle">
+  <div class="onb-inner">
+    <div class="onb-body" id="onbBody"></div>
+    <div class="onb-foot">
+      <button class="btn-primary" id="onbNext" type="button">Start</button>
+      <button class="onb-skip" id="onbSkip" type="button">Skip for now</button>
+    </div>
+  </div>
+</div>
+
+<div class="ask" id="ask" role="alertdialog" aria-modal="true" aria-labelledby="askMsg">
+  <div class="ask-bg" data-ask-no></div>
+  <div class="ask-box">
+    <p id="askMsg"></p>
+    <div class="ask-row">
+      <button class="ask-no" id="askNo" type="button">Cancel</button>
+      <button class="ask-yes" id="askYes" type="button">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   STORAGE
+   ============================================================ */
+var KEY = "kasey:data:v2";
+var THEME_KEY = "kasey:theme";
+var memory = null;
+var persistent = !!(window.storage && window.storage.get);
+
+var STAGES = [
+  {n:1, name:"Caught it early",   ds:"Pulled out of it before it took hold"},
+  {n:2, name:"Shut down",         ds:"Went quiet, withdrew, stopped talking"},
+  {n:3, name:"Argued through it", ds:"Defending, arguing, trying to regain control"},
+  {n:4, name:"Full meltdown",     ds:"Lost it completely"}
+];
+
+function defaults(){
+  return {
+    settings:{
+      onboarded:false,
+      childName:"", childAge:"", contact:"",
+      loves:"", proudOf:"", laughs:"",
+      alwaysTrue:"", communication:"", pleaseDont:"", worthKnowing:"",
+      theme:"auto",
+      lib:{
+        triggers:["Loud noise","Transition","Told no","Crowded","Clothing","Hungry","Tired","Unknown"],
+        behaviors:["Crying","Screaming","Covering ears","Hitting","Withdrew","Bolted","Head-banging"],
+        tools:["Headphones","Dark room","Weighted blanket","Deep pressure","Ride in car","Snack","Nothing we tried helped"],
+        sources:["Home","School","Sitter","Therapy","Out"]
+      }
+    },
+    entries:[],
+    changes:[],   // typed: med / therapy / school / other. Meds may overlap.
+    draft:null
+  };
+}
+var DATA = defaults();
+
+async function load(){
+  if(!persistent){ DATA = memory || defaults(); return; }
+  try{
+    var r = await window.storage.get(KEY);
+    if(r && r.value){ DATA = migrate(JSON.parse(r.value)); }
+  }catch(e){}
+}
+async function save(){
+  memory = DATA;
+  if(!persistent) return;
+  try{ await window.storage.set(KEY, JSON.stringify(DATA)); }
+  catch(e){ toast("Couldn't save — showing unsaved copy"); }
+}
+/* ============================================================
+   FIRST RUN — the point is that a real, printable page exists
+   before a single episode is logged. 70% of people in this
+   category quit before any log-based value could accrue.
+   ============================================================ */
+var onbStep = 0;
+var onbEl, onbBody, onbNext, onbSkip;
+
+function onbFields(){ return [
+  {key:"childName", label:"What do you call them?", ph:"Avi", hint:"first name is fine"},
+  {key:"loves",     label:"What do they love?",     ph:"Trains, anything with a map, his dog Rocket", hint:"the thing they'd talk about all day"},
+  {key:"proudOf",   label:"What are they proud of?",ph:"Reading chapter books on his own", hint:""},
+  {key:"laughs",    label:"What makes them laugh?", ph:"Silly voices and terrible knock-knock jokes", hint:""}
+]; }
+
+function startOnboarding(){
+  onbEl = document.getElementById("onb");
+  onbBody = document.getElementById("onbBody");
+  onbNext = document.getElementById("onbNext");
+  onbSkip = document.getElementById("onbSkip");
+  onbStep = 0;
+  onbEl.classList.add("open");
+  document.body.style.overflow = "hidden";
+  paintOnb();
+}
+function endOnboarding(goToPage){
+  DATA.settings.onboarded = true;
+  save();
+  onbEl.classList.remove("open");
+  document.body.style.overflow = "";
+  if(goToPage){ current = "page"; pageMode = "handoff"; }
+  render();
+}
+
+function paintOnb(){
+  clear(onbBody);
+  onbBody.scrollTop = 0;
+  var s = DATA.settings;
+
+  // --- welcome ---
+  if(onbStep === 0){
+    onbBody.appendChild(mark("kcTile"));
+    var h1 = el("h1", null, "Before you log anything");
+    h1.id = "onbTitle";
+    onbBody.appendChild(h1);
+    onbBody.appendChild(el("p","lede",
+      "Four short questions and you'll have a page you can hand a sitter tonight. No episodes required."));
+    var why = el("div","banner good");
+    why.textContent = "Most apps in this category give you nothing until you've logged for weeks. This one starts with who your child is, because that's the part a sitter actually needs first.";
+    onbBody.appendChild(why);
+    onbNext.textContent = "Start";
+    onbSkip.hidden = false;
+    return;
+  }
+
+  // --- the four questions, one per screen ---
+  var fields = onbFields();
+  if(onbStep <= fields.length){
+    var f = fields[onbStep - 1];
+    onbBody.appendChild(el("span","step", "Question " + onbStep + " of " + fields.length));
+    var q = el("h1", null, f.label);
+    q.id = "onbTitle";
+    onbBody.appendChild(q);
+    if(f.hint) onbBody.appendChild(el("p","lede", f.hint));
+    var inp = el("input"); inp.type = "text";
+    inp.value = s[f.key] || "";
+    inp.placeholder = f.ph;
+    inp.setAttribute("aria-label", f.label);
+    inp.addEventListener("input", function(){ s[f.key] = inp.value; });
+    inp.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){ e.preventDefault(); onbAdvance(); }
+    });
+    onbBody.appendChild(inp);
+    if(onbStep > 1){
+      onbBody.appendChild(el("p","why",
+        "This goes at the top of the page you hand people. A sitter who can start a conversation about trains prevents more hard moments than one who only knows the warning signs."));
+    }
+    onbNext.textContent = onbStep === fields.length ? "See my page" : "Next";
+    onbSkip.hidden = false;
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 90);
+    return;
+  }
+
+  // --- the payoff: a real page, right now ---
+  var name = (s.childName || "").trim() || "Your child";
+  onbBody.appendChild(el("span","step","Ready"));
+  var d1 = el("h1", null, "That's a real page.");
+  d1.id = "onbTitle";
+  onbBody.appendChild(d1);
+  onbBody.appendChild(el("p","lede",
+    "You can print it or hand it over tonight. It fills itself in further every time you log something."));
+
+  var pv = el("div","onb-preview");
+  pv.appendChild(el("div","pnm", name + (s.childAge ? ", " + s.childAge : "")));
+  pv.appendChild(el("div","pwho","For teachers, sitters, and anyone caring for " + name));
+  pv.appendChild(el("div","plab","Start here"));
+  if(s.loves)   pv.appendChild(el("p","pln","Loves: " + s.loves));
+  if(s.proudOf) pv.appendChild(el("p","pln","Proud of: " + s.proudOf));
+  if(s.laughs)  pv.appendChild(el("p","pln","Makes them laugh: " + s.laughs));
+  if(!s.loves && !s.proudOf && !s.laughs){
+    pv.appendChild(el("p","pln","Add a few lines in Setup and they'll appear here."));
+  }
+  onbBody.appendChild(pv);
+
+  onbBody.appendChild(el("p","why",
+    "Triggers, what helps, and how long they usually take to settle get added automatically as you log. Nothing here needs rewriting by hand."));
+  onbNext.textContent = "Open my page";
+  onbSkip.hidden = true;
+}
+
+function onbAdvance(){
+  var fields = onbFields();
+  if(onbStep > fields.length){ endOnboarding(true); return; }
+  onbStep++;
+  paintOnb();
+}
+
+function applyTheme(){
+  var mode = (DATA.settings && DATA.settings.theme) || "auto";
+  var dark = mode === "dark" ||
+    (mode === "auto" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  if(dark) document.documentElement.setAttribute("data-theme","dark");
+  else document.documentElement.removeAttribute("data-theme");
+  var meta = document.getElementById("themeColor");
+  if(meta) meta.setAttribute("content", dark ? "#151A19" : "#F1F3EF");
+}
+if(window.matchMedia){
+  try{
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){
+      if(((DATA.settings||{}).theme || "auto") === "auto") applyTheme();
+    });
+  }catch(e){}
+}
+
+function migrate(d){
+  var base = defaults();
+  d = d || {};
+  d.settings = Object.assign({}, base.settings, d.settings || {});
+  d.settings.lib = Object.assign({}, base.settings.lib, (d.settings && d.settings.lib) || {});
+  d.entries = Array.isArray(d.entries) ? d.entries : [];
+  var legacy = Array.isArray(d.eras) ? d.eras
+             : (Array.isArray(d.markers) ? d.markers.map(function(m){ return {id:m.id, label:m.label, start:m.at}; })
+             : []);
+  d.changes = Array.isArray(d.changes) ? d.changes : legacy.map(function(e){
+    return {id:e.id, kind:"other", label:e.label, dose:"", start:e.start, end:null, note:""};
+  });
+  delete d.eras; delete d.markers;
+  d.entries.forEach(function(e){
+    if(!e.source) e.source = "Home";
+    if(!e.kind) e.kind = "hard";
+    if(e.kind === "hard" && !e.stage) e.stage = 4;
+  });
+  if(d.draft === undefined) d.draft = null;
+  return d;
+}
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function uid(){ return "e" + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function el(tag, cls, text){
+  var n = document.createElement(tag);
+  if(cls) n.className = cls;
+  if(text !== undefined && text !== null) n.textContent = text;
+  return n;
+}
+function mark(symbol, cls){
+  var s = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  s.setAttribute("class", "kc" + (cls ? " " + cls : ""));
+  s.setAttribute("viewBox","0 0 120 120");
+  s.setAttribute("aria-hidden","true");
+  s.setAttribute("focusable","false");
+  var u = document.createElementNS("http://www.w3.org/2000/svg","use");
+  u.setAttribute("href", "#" + symbol);
+  s.appendChild(u);
+  return s;
+}
+function clear(node){ while(node.firstChild) node.removeChild(node.firstChild); }
+function pad(n){ return n < 10 ? "0"+n : ""+n; }
+function toDateInput(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+function toTimeInput(d){ return pad(d.getHours())+":"+pad(d.getMinutes()); }
+function fromInputs(dateStr, timeStr){
+  var dp = (dateStr||"").split("-"), tp = (timeStr||"12:00").split(":");
+  if(dp.length !== 3 || tp.length < 2) return null;
+  var d = new Date(+dp[0], +dp[1]-1, +dp[2], +tp[0], +tp[1], 0, 0);
+  return isNaN(d.getTime()) ? null : d;
+}
+var DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+var MONS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function fmtTime(d){
+  var h = d.getHours(), m = d.getMinutes(), ap = h >= 12 ? "p" : "a";
+  h = h % 12; if(h === 0) h = 12;
+  return h + ":" + pad(m) + ap;
+}
+function fmtDayHeading(d){
+  var today = new Date(); today.setHours(0,0,0,0);
+  var that = new Date(d); that.setHours(0,0,0,0);
+  var diff = Math.round((today - that) / 86400000);
+  if(diff === 0) return "Today";
+  if(diff === 1) return "Yesterday";
+  if(diff > 1 && diff < 7) return DAYS[d.getDay()];
+  return DAYS[d.getDay()] + ", " + MONS[d.getMonth()] + " " + d.getDate();
+}
+function fmtStamp(iso){
+  var d = new Date(iso);
+  return MONS[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+" at "+fmtTime(d);
+}
+function fmtDate(iso){
+  var d = new Date(iso);
+  return MONS[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+}
+function minsColor(m){
+  if(m <= 15) return "var(--s1)";
+  if(m <= 30) return "var(--s2)";
+  if(m <= 60) return "var(--s3)";
+  if(m <= 100) return "var(--s4)";
+  return "var(--s5)";
+}
+function minsWidth(m){ return Math.max(6, Math.min(100, Math.round(m / 120 * 100))); }
+function fmtMins(m){
+  if(m < 60) return m + " min";
+  var h = Math.floor(m/60), r = m % 60;
+  return r ? h + "h " + r + "m" : h + "h";
+}
+function median(arr){
+  if(!arr.length) return 0;
+  var s = arr.slice().sort(function(a,b){ return a-b; });
+  var mid = Math.floor(s.length/2);
+  return s.length % 2 ? s[mid] : Math.round((s[mid-1]+s[mid])/2);
+}
+var askEl = document.getElementById("ask");
+var askPending = null;
+function askConfirm(message, yesLabel, onYes, noLabel, tone){
+  document.getElementById("askMsg").textContent = message;
+  document.getElementById("askYes").textContent = yesLabel || "Delete";
+  document.getElementById("askNo").textContent = noLabel || "Cancel";
+  document.getElementById("askYes").style.background =
+    tone === "good" ? "var(--good)" : "var(--warn)";
+  askPending = onYes;
+  askEl.classList.add("open");
+  document.getElementById("askNo").focus({preventScroll:true});
+}
+function askClose(){ askEl.classList.remove("open"); askPending = null; }
+document.getElementById("askYes").addEventListener("click", function(){
+  var fn = askPending; askClose(); if(fn) fn();
+});
+document.getElementById("askNo").addEventListener("click", askClose);
+askEl.querySelector("[data-ask-no]").addEventListener("click", askClose);
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape" && askEl.classList.contains("open")) askClose();
+});
+
+var toastTimer = null;
+function toast(msg, undoLabel, undoFn){
+  var t = document.getElementById("toast");
+  clear(t);
+  t.appendChild(el("span", null, msg));
+  if(undoLabel && undoFn){
+    var b = el("button", null, undoLabel); b.type = "button";
+    b.addEventListener("click", function(){ t.classList.remove("show"); undoFn(); });
+    t.appendChild(b);
+  }
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, undoFn ? 5000 : 2200);
+}
+function childName(){ return (DATA.settings.childName || "").trim() || "Your child"; }
+function sortedEntries(){
+  return DATA.entries.slice().sort(function(a,b){ return new Date(b.at) - new Date(a.at); });
+}
+function hardOnly(list){ return (list || DATA.entries).filter(function(e){ return e.kind !== "good"; }); }
+
+/* ============================================================
+   CHIP GROUP
+   ============================================================ */
+function chipGroup(opts){
+  var wrap = el("div");
+  var chips = el("div","chips");
+  var selected = opts.selected.slice();
+
+  function paint(){
+    clear(chips);
+    opts.items.forEach(function(name){
+      var b = el("button","chip", name);
+      b.type = "button";
+      if(/^nothing we tried helped$/i.test(name) || /^nothing worked$/i.test(name)) b.classList.add("nothing");
+      if(/^unknown$/i.test(name)) b.classList.add("unknown");
+      b.setAttribute("aria-pressed", selected.indexOf(name) > -1 ? "true" : "false");
+      b.addEventListener("click", function(){
+        var i = selected.indexOf(name);
+        var isNone = /^nothing/i.test(name);
+        if(opts.multi){
+          if(i > -1) selected.splice(i,1);
+          else if(isNone) selected = [name];
+          else {
+            selected = selected.filter(function(s){ return !/^nothing/i.test(s); });
+            selected.push(name);
+          }
+        } else {
+          selected = (i > -1) ? [] : [name];
+        }
+        paint(); opts.onChange(selected);
+      });
+      chips.appendChild(b);
+    });
+    var add = el("button","chip add","+ Add");
+    add.type = "button";
+    add.addEventListener("click", function(){ addRow.hidden = false; addInput.focus(); });
+    chips.appendChild(add);
+  }
+
+  var addRow = el("div","addrow");
+  addRow.hidden = true;
+  var addInput = el("input"); addInput.type = "text"; addInput.placeholder = "Add your own…";
+  addInput.setAttribute("aria-label","Add your own option");
+  var addBtn = el("button", null, "Add"); addBtn.type = "button";
+  function commit(){
+    var v = addInput.value.trim();
+    if(!v) return;
+    if(opts.items.some(function(x){ return x.toLowerCase() === v.toLowerCase(); })){
+      toast("Already on the list"); addInput.value = ""; return;
+    }
+    opts.items.push(v);
+    DATA.settings.lib[opts.libKey] = opts.items;
+    if(opts.multi) selected.push(v); else selected = [v];
+    addInput.value = ""; addRow.hidden = true;
+    paint(); opts.onChange(selected); save();
+  }
+  addBtn.addEventListener("click", commit);
+  addInput.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); commit(); } });
+  addRow.appendChild(addInput); addRow.appendChild(addBtn);
+
+  paint();
+  wrap.appendChild(chips); wrap.appendChild(addRow);
+  return wrap;
+}
+
+/* ============================================================
+   SHEET
+   ============================================================ */
+var sheet = document.getElementById("sheet");
+var sheetBody = document.getElementById("sheetBody");
+var sheetTitle = document.getElementById("sheetTitle");
+var sheetSave = document.getElementById("sheetSave");
+var sheetFoot = document.getElementById("sheetFoot");
+var autosaveNote = document.getElementById("autosaveNote");
+var editing = null;
+var sheetMode = "entry";
+
+function openSheet(){
+  sheetFoot.hidden = false;   // never leave a sheet without its save button
+  sheet.classList.add("open");
+  document.body.style.overflow = "hidden";
+  sheetBody.scrollTop = 0;
+}
+function closeSheet(){
+  sheet.classList.remove("open");
+  document.body.style.overflow = "";
+  editing = null;
+}
+function tryCloseSheet(){
+  if(editing && editing.isNew && editing.dirty){
+    askConfirm("Discard this entry? Your draft is saved, so you can pick it back up later.",
+      "Discard", closeSheet);
+    return;
+  }
+  closeSheet();
+}
+Array.prototype.forEach.call(sheet.querySelectorAll("[data-close]"), function(n){
+  n.addEventListener("click", tryCloseSheet);
+});
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape" && sheet.classList.contains("open")) tryCloseSheet();
+});
+
+/* keep the focused field above the keyboard */
+sheetBody.addEventListener("focusin", function(e){
+  var t = e.target;
+  if(!t || !t.scrollIntoView) return;
+  setTimeout(function(){
+    try{ t.scrollIntoView({block:"center", behavior:"smooth"}); }catch(err){}
+  }, 260);
+});
+
+/* ============================================================
+   ENTRY EDITOR
+   ============================================================ */
+var draftTimer = null;
+function stashDraft(){
+  if(!editing || !editing.isNew) return;
+  editing.dirty = true;
+  clearTimeout(draftTimer);
+  draftTimer = setTimeout(function(){
+    DATA.draft = editing.draft;
+    save();
+  }, 400);
+}
+
+function newDraft(kind){
+  var now = new Date();
+  return {
+    id:uid(), at:now.toISOString(), kind:kind || "hard",
+    stage:0, trigger:"", behaviors:[], tools:[], minutes:20,
+    note:"", source:"Home", flagged:false,
+    createdAt:now.toISOString(), updatedAt:null
+  };
+}
+
+function editEntry(entry, resumeDraft){
+  var isNew = !entry;
+  var draft = entry ? JSON.parse(JSON.stringify(entry)) : (resumeDraft || newDraft("hard"));
+  sheetMode = "entry";
+  editing = { draft:draft, isNew:isNew, dirty:false };
+  sheetTitle.textContent = isNew ? "What happened" : "Edit entry";
+  sheetSave.textContent = isNew ? "Save entry" : "Save changes";
+  autosaveNote.hidden = !isNew;
+  clear(sheetBody);
+
+  if(isNew && resumeDraft){
+    var rb = el("div","banner good");
+    rb.textContent = "Picked up where you left off.";
+    sheetBody.appendChild(rb);
+  }
+
+  var d = new Date(draft.at);
+
+  /* --- 1. STAGE: the primary question, first, no typing --- */
+  var fStage = el("div","field");
+  var lStage = el("label"); lStage.textContent = "How far did it get?";
+  fStage.appendChild(lStage);
+  var stagesWrap = el("div","stages");
+  function paintStages(){
+    clear(stagesWrap);
+    STAGES.forEach(function(s){
+      var b = el("button","stage s" + s.n); b.type = "button";
+      b.setAttribute("aria-pressed", draft.stage === s.n ? "true" : "false");
+      b.appendChild(el("span","num", String(s.n)));
+      var body = el("span","body");
+      body.appendChild(el("span","nm", s.name));
+      body.appendChild(el("span","ds", s.ds));
+      b.appendChild(body);
+      b.addEventListener("click", function(){
+        draft.stage = (draft.stage === s.n) ? 0 : s.n;
+        paintStages(); stashDraft();
+      });
+      stagesWrap.appendChild(b);
+    });
+  }
+  paintStages();
+  fStage.appendChild(stagesWrap);
+  sheetBody.appendChild(fStage);
+
+  /* --- 2. TRIGGER --- */
+  var fTrig = el("div","field");
+  var lTrig = el("label"); lTrig.textContent = "What set it off ";
+  lTrig.appendChild(el("span","hint","— pick one"));
+  fTrig.appendChild(lTrig);
+  fTrig.appendChild(chipGroup({
+    items: DATA.settings.lib.triggers,
+    selected: draft.trigger ? [draft.trigger] : [],
+    multi:false, libKey:"triggers",
+    onChange:function(sel){ draft.trigger = sel[0] || ""; stashDraft(); }
+  }));
+  sheetBody.appendChild(fTrig);
+
+  /* --- 3. MINUTES --- */
+  var fMin = el("div","field");
+  fMin.appendChild(el("label", null, "Back to baseline in"));
+  var sw = el("div","slider-wrap");
+  var sv = el("div","slider-val");
+  var svNum = document.createTextNode(String(draft.minutes));
+  sv.appendChild(svNum); sv.appendChild(el("span", null, "minutes"));
+  var prev = el("div","slider-preview");
+  var pf = el("span","rfill");
+  prev.appendChild(pf);
+  var rng = el("input"); rng.type = "range"; rng.min = "5"; rng.max = "180"; rng.step = "5";
+  rng.value = String(draft.minutes); rng.setAttribute("aria-label","Minutes until back to baseline");
+  function paintMins(){
+    var v = parseInt(rng.value,10);
+    draft.minutes = v;
+    svNum.nodeValue = String(v);
+    pf.style.width = minsWidth(v) + "%";
+    pf.style.background = minsColor(v);
+  }
+  rng.addEventListener("input", function(){ paintMins(); stashDraft(); });
+  sw.appendChild(sv); sw.appendChild(prev); sw.appendChild(rng);
+  var quick = el("div","quickmins");
+  [5,15,30,60,90,120].forEach(function(v){
+    var b = el("button", null, fmtMins(v)); b.type = "button";
+    b.addEventListener("click", function(){ rng.value = String(v); paintMins(); stashDraft(); });
+    quick.appendChild(b);
+  });
+  sw.appendChild(quick);
+  fMin.appendChild(sw);
+  paintMins();
+  sheetBody.appendChild(fMin);
+
+  /* --- 4. WHAT HELPED --- */
+  var fTool = el("div","field");
+  var lTool = el("label"); lTool.textContent = "What helped ";
+  lTool.appendChild(el("span","hint","— pick any"));
+  fTool.appendChild(lTool);
+  fTool.appendChild(chipGroup({
+    items: DATA.settings.lib.tools,
+    selected: draft.tools,
+    multi:true, libKey:"tools",
+    onChange:function(sel){ draft.tools = sel; stashDraft(); }
+  }));
+  sheetBody.appendChild(fTool);
+
+  /* --- everything below is optional, hidden by default --- */
+  var moreBox = el("div");
+  var hasExtra = !!(draft.note || (draft.behaviors||[]).length || draft.flagged ||
+                    (draft.source && draft.source !== "Home"));
+  moreBox.hidden = !hasExtra && isNew;
+
+  var moreBtn = el("button","more-toggle", moreBox.hidden ? "+ Add more detail" : "− Less detail");
+  moreBtn.type = "button";
+  moreBtn.addEventListener("click", function(){
+    moreBox.hidden = !moreBox.hidden;
+    moreBtn.textContent = moreBox.hidden ? "+ Add more detail" : "− Less detail";
+  });
+  sheetBody.appendChild(moreBtn);
+
+  // when
+  var fWhen = el("div","field");
+  var lWhen = el("label"); lWhen.textContent = "When it happened ";
+  lWhen.appendChild(el("span","hint","— change this if you're logging it later"));
+  fWhen.appendChild(lWhen);
+  var row = el("div","row2");
+  var dIn = el("input"); dIn.type = "date"; dIn.value = toDateInput(d); dIn.setAttribute("aria-label","Date");
+  var tIn = el("input"); tIn.type = "time"; tIn.value = toTimeInput(d); tIn.setAttribute("aria-label","Time");
+  function syncWhen(){
+    var nd = fromInputs(dIn.value, tIn.value);
+    if(nd){ draft.at = nd.toISOString(); stashDraft(); }
+  }
+  dIn.addEventListener("change", syncWhen);
+  tIn.addEventListener("change", syncWhen);
+  row.appendChild(dIn); row.appendChild(tIn);
+  fWhen.appendChild(row);
+  moreBox.appendChild(fWhen);
+
+  // where
+  var fSrc = el("div","field");
+  var lSrc = el("label"); lSrc.textContent = "Where it happened";
+  fSrc.appendChild(lSrc);
+  fSrc.appendChild(chipGroup({
+    items: DATA.settings.lib.sources,
+    selected: draft.source ? [draft.source] : ["Home"],
+    multi:false, libKey:"sources",
+    onChange:function(sel){ draft.source = sel[0] || "Home"; stashDraft(); }
+  }));
+  moreBox.appendChild(fSrc);
+
+  // behaviors
+  var fBeh = el("div","field");
+  var lBeh = el("label"); lBeh.textContent = "What it looked like ";
+  lBeh.appendChild(el("span","hint","— optional"));
+  fBeh.appendChild(lBeh);
+  fBeh.appendChild(chipGroup({
+    items: DATA.settings.lib.behaviors,
+    selected: draft.behaviors,
+    multi:true, libKey:"behaviors",
+    onChange:function(sel){ draft.behaviors = sel; stashDraft(); }
+  }));
+  moreBox.appendChild(fBeh);
+
+  // note
+  var fNote = el("div","field");
+  var lNote = el("label"); lNote.textContent = "Note ";
+  lNote.appendChild(el("span","hint","— optional"));
+  fNote.appendChild(lNote);
+  var ta = el("textarea"); ta.value = draft.note || "";
+  ta.placeholder = "Anything the buttons missed";
+  ta.addEventListener("input", function(){ draft.note = ta.value; stashDraft(); });
+  fNote.appendChild(ta);
+  moreBox.appendChild(fNote);
+
+  // flag
+  var fFlag = el("div","field");
+  var flagBtn = el("button","chip"); flagBtn.type = "button";
+  flagBtn.textContent = "⚑ Flag this for the doctor";
+  flagBtn.setAttribute("aria-pressed", draft.flagged ? "true" : "false");
+  flagBtn.addEventListener("click", function(){
+    draft.flagged = !draft.flagged;
+    flagBtn.setAttribute("aria-pressed", draft.flagged ? "true" : "false");
+    stashDraft();
+  });
+  fFlag.appendChild(flagBtn);
+  moreBox.appendChild(fFlag);
+
+  sheetBody.appendChild(moreBox);
+
+  if(!isNew){
+    var del = el("button","btn-ghost","Delete this entry"); del.type = "button";
+    del.addEventListener("click", function(){
+      askConfirm("Delete this entry? This can't be undone.", "Delete", function(){
+        DATA.entries = DATA.entries.filter(function(x){ return x.id !== draft.id; });
+        save(); closeSheet(); render(); toast("Entry deleted");
+      });
+    });
+    sheetBody.appendChild(del);
+    var meta = el("div","meta");
+    meta.appendChild(el("div", null, "Added " + fmtStamp(draft.createdAt)));
+    if(draft.updatedAt) meta.appendChild(el("div", null, "Edited " + fmtStamp(draft.updatedAt)));
+    sheetBody.appendChild(meta);
+  }
+
+  openSheet();
+}
+
+sheetSave.addEventListener("click", function(){
+  if(sheetMode === "note"){ closeSheet(); return; }
+  if(sheetMode === "change"){ saveChange(); return; }
+  if(!editing) return;
+  var d = editing.draft;
+  var wasNew = editing.isNew;
+  // a good day has no stage — only episodes need one
+  if(d.kind !== "good" && !d.stage){
+    toast("Pick how far it got"); sheetBody.scrollTop = 0; return;
+  }
+  if(wasNew){
+    DATA.entries.push(d);
+    DATA.draft = null;
+  } else {
+    d.updatedAt = new Date().toISOString();
+    DATA.entries = DATA.entries.map(function(e){ return e.id === d.id ? d : e; });
+  }
+  save(); closeSheet(); render();
+  toast(wasNew ? "Saved" : "Updated");
+
+  // The one moment they actually know how the day went. One tap, skippable.
+  if(wasNew && d.kind !== "good"){
+    var k = toDateInput(new Date(d.at));
+    var alreadyGood = DATA.entries.some(function(x){
+      return x.kind === "good" && toDateInput(new Date(x.at)) === k;
+    });
+    if(!alreadyGood){
+      setTimeout(function(){
+        askConfirm("How was the rest of the day?",
+          "Fine, actually", function(){ logGoodDay(new Date(d.at)); },
+          "Rough too", "good");
+      }, 450);
+    }
+  }
+});
+
+/* ---- one-tap good day ---- */
+function logGoodDay(forDate){
+  var now = forDate ? new Date(forDate) : new Date();
+  var todayKey = toDateInput(now);
+  var already = DATA.entries.some(function(e){
+    return e.kind === "good" && toDateInput(new Date(e.at)) === todayKey;
+  });
+  if(already){ toast("Today is already marked good"); return; }
+  var hadEpisode = DATA.entries.some(function(e){
+    return e.kind !== "good" && toDateInput(new Date(e.at)) === todayKey;
+  });
+  var e = {
+    id:uid(), at:now.toISOString(), kind:"good", note:"", source:"Home",
+    createdAt:now.toISOString(), updatedAt:null
+  };
+  DATA.entries.push(e);
+  save(); render();
+  toast(hadEpisode ? "Marked good overall" : "Good day logged", "Undo", function(){
+    DATA.entries = DATA.entries.filter(function(x){ return x.id !== e.id; });
+    save(); render();
+  });
+}
+
+/* ============================================================
+   ANALYSIS
+   ============================================================ */
+function analyse(list){
+  var all = list || DATA.entries;
+  var es = hardOnly(all);
+  var good = all.filter(function(e){ return e.kind === "good"; });
+  var trig = {}, tools = {}, beh = {}, src = {}, stages = {};
+  es.forEach(function(e){
+    if(e.trigger) trig[e.trigger] = (trig[e.trigger] || 0) + 1;
+    src[e.source || "Home"] = (src[e.source || "Home"] || 0) + 1;
+    stages[e.stage || 4] = (stages[e.stage || 4] || 0) + 1;
+    (e.behaviors||[]).forEach(function(b){ beh[b] = (beh[b]||0)+1; });
+    (e.tools||[]).forEach(function(t){
+      if(/^nothing/i.test(t)) return;
+      (tools[t] = tools[t] || []).push(e.minutes);
+    });
+  });
+  function rank(o){
+    return Object.keys(o).map(function(k){ return {name:k, n:o[k]}; })
+      .sort(function(a,b){ return b.n - a.n; });
+  }
+  var helps = Object.keys(tools).map(function(k){
+    return {name:k, n:tools[k].length, med:median(tools[k])};
+  }).sort(function(a,b){
+    if(a.n >= 2 && b.n < 2) return -1;
+    if(b.n >= 2 && a.n < 2) return 1;
+    return a.med - b.med;
+  });
+  var nothing = es.filter(function(e){
+    return (e.tools||[]).some(function(t){ return /^nothing/i.test(t); });
+  }).length;
+  var caughtEarly = es.filter(function(e){ return e.stage === 1; }).length;
+
+  // days are days. An episode is an event; several can share one day,
+  // and a day can be marked good even if something happened in it.
+  function dayKey(e){ return toDateInput(new Date(e.at)); }
+  var hardDaySet = {}, goodDaySet = {}, allDaySet = {};
+  es.forEach(function(e){ hardDaySet[dayKey(e)] = 1; allDaySet[dayKey(e)] = 1; });
+  good.forEach(function(e){ goodDaySet[dayKey(e)] = 1; allDaySet[dayKey(e)] = 1; });
+  var hardDays = Object.keys(hardDaySet).length;
+  var goodDays = Object.keys(goodDaySet).length;
+  var allDays  = Object.keys(allDaySet).length;
+  var bothDays = Object.keys(goodDaySet).filter(function(k){ return hardDaySet[k]; }).length;
+  var clearDays = allDays - hardDays;
+  var perWeek = 0, spanDays = 0;
+  if(all.length){
+    var times = all.map(function(e){ return new Date(e.at).getTime(); });
+    spanDays = Math.max(1, (Math.max.apply(null,times) - Math.min.apply(null,times)) / 86400000);
+    perWeek = es.length / (spanDays / 7);   // episodes per week, not days
+  }
+  return {
+    n: es.length, nGood: good.length, nAll: all.length,
+    episodes: es.length,
+    hardDays: hardDays, goodDays: goodDays, allDays: allDays,
+    bothDays: bothDays, clearDays: clearDays,
+    topTriggers: rank(trig), topBeh: rank(beh), sources: rank(src),
+    stages: stages, caughtEarly: caughtEarly,
+    helps: helps, nothing: nothing,
+    longest: es.slice().sort(function(a,b){ return b.minutes - a.minutes; }).slice(0,5),
+    flagged: es.filter(function(e){ return e.flagged; }),
+    typical: median(es.map(function(e){ return e.minutes; })),
+    perWeek: perWeek, spanDays: Math.round(spanDays)
+  };
+}
+function entriesBetween(a,b){
+  return DATA.entries.filter(function(e){
+    var t = new Date(e.at).getTime();
+    return t >= a && t < b;
+  });
+}
+function pctChange(a,b){ if(!a) return null; return Math.round(((b-a)/a)*100); }
+
+var CHANGE_KINDS = [
+  {k:"med",     label:"Medication", hint:"a drug, a dose, or stopping one"},
+  {k:"therapy", label:"Therapy",    hint:"ABA, OT, speech, counselling"},
+  {k:"school",  label:"School",     hint:"new class, teacher, term, routine"},
+  {k:"other",   label:"Something else", hint:"a strategy, a move, anything"}
+];
+function kindLabel(k){
+  for(var i=0;i<CHANGE_KINDS.length;i++) if(CHANGE_KINDS[i].k === k) return CHANGE_KINDS[i].label;
+  return "Change";
+}
+function sortedChanges(){
+  return DATA.changes.slice().sort(function(a,b){ return new Date(b.start) - new Date(a.start); });
+}
+function currentMeds(){
+  return DATA.changes.filter(function(c){ return c.kind === "med" && !c.end; })
+    .sort(function(a,b){ return new Date(a.start) - new Date(b.start); });
+}
+function pastMeds(){
+  return DATA.changes.filter(function(c){ return c.kind === "med" && c.end; })
+    .sort(function(a,b){ return new Date(b.start) - new Date(a.start); });
+}
+function medLine(c){ return c.label + (c.dose ? " · " + c.dose : ""); }
+function daysSince(iso){ return Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 86400000)); }
+
+// Windowed comparison. Independent of any other change, so overlapping
+// medications no longer truncate each other.
+function compareChange(c, windowDays){
+  var w = (windowDays || 30) * 86400000;
+  var at = new Date(c.start).getTime();
+  var afterEnd = Math.min(at + w, Date.now() + 1);
+  return {
+    before: analyse(entriesBetween(at - w, at)),
+    after:  analyse(entriesBetween(at, afterEnd)),
+    beforeFrom: at - w, beforeTo: at,
+    afterFrom: at, afterTo: afterEnd,
+    afterDays: Math.round((afterEnd - at) / 86400000),
+    windowDays: windowDays || 30
+  };
+}
+
+/* ============================================================
+   VIEWS
+   ============================================================ */
+var current = "log";
+var pageMode = "handoff";
+var expandedMonths = {};
+var view = document.getElementById("view");
+var dock = document.getElementById("dock");
+var topTitle = document.getElementById("topTitle");
+var topSub = document.getElementById("topSub");
+var topAction = document.getElementById("topAction");
+
+function render(){
+  clear(view);
+  topAction.hidden = true;
+  topAction.onclick = null;
+  buildDock();
+  refreshPip();
+  if(current === "log") renderLog();
+  else if(current === "read") renderRead();
+  else if(current === "page") renderPage();
+  else renderSettings();
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){
+    t.setAttribute("aria-current", t.dataset.tab === current ? "true" : "false");
+  });
+}
+
+function renderLog(){
+  var es = sortedEntries();
+  topTitle.textContent = childName() === "Your child" ? "Log" : childName();
+  var a = analyse();
+  topSub.textContent = es.length
+    ? a.episodes + (a.episodes === 1 ? " episode" : " episodes") + " · " + a.allDays + " days"
+    : "Nothing logged yet";
+
+  if(!persistent){
+    var b = el("div","banner warn");
+    b.textContent = "Saving isn't available here, so entries will disappear when you close this. Everything else works — use Export in Setup to keep a copy.";
+    view.appendChild(b);
+  }
+
+  if(DATA.draft){
+    var rb = el("div","banner info");
+    rb.appendChild(el("span", null, "You have an unfinished entry."));
+    var resume = el("button", null, "Pick it back up"); resume.type = "button";
+    resume.addEventListener("click", function(){ editEntry(null, DATA.draft); });
+    rb.appendChild(resume);
+    var discard = el("button", null, "Discard"); discard.type = "button";
+    discard.style.marginLeft = "12px";
+    discard.addEventListener("click", function(){ DATA.draft = null; save(); render(); });
+    rb.appendChild(discard);
+    view.appendChild(rb);
+  }
+
+  if(!es.length){
+    var emp = el("div","empty");
+    emp.appendChild(mark("kcTile"));
+    emp.appendChild(el("h2", null, "Nothing logged yet"));
+    emp.appendChild(el("p", null, "Log the good days too. A record made only of meltdowns makes any child look worse than they are."));
+    var how = el("div","banner good");
+    how.style.textAlign = "left";
+    how.textContent = "Two different things: an episode is one moment, a good day is your verdict on the whole day. You can log both for the same day — a rough half hour doesn't cancel out a decent day, and Kasey counts them separately.";
+    emp.appendChild(how);
+    var seed = el("button","btn-quiet","Load a few example entries"); seed.type = "button";
+    seed.addEventListener("click", seedExamples);
+    emp.appendChild(seed);
+    view.appendChild(emp);
+    return;
+  }
+
+  // summary strip
+  var last30 = entriesBetween(Date.now() - 30*86400000, Date.now() + 1);
+  var a30 = analyse(last30);
+  var strip = el("button","strip"); strip.type = "button";
+  strip.appendChild(el("span","lab","Last 30 days"));
+  var srow = el("div","strip-row");
+  function stat(num, unit, label){
+    var s = el("div","strip-stat");
+    var n = el("span","n", num);
+    if(unit) n.appendChild(el("small", null, unit));
+    s.appendChild(n);
+    s.appendChild(el("span","t", label));
+    return s;
+  }
+  srow.appendChild(stat(String(a30.hardDays), a30.allDays ? " of " + a30.allDays : "", "days had an episode"));
+  srow.appendChild(stat(a30.typical ? String(a30.typical) : "—", a30.typical ? "min" : "", "typical recovery"));
+  srow.appendChild(stat(String(a30.caughtEarly), "", "caught early"));
+  strip.appendChild(srow);
+  if(a30.allDays){
+    var ratio = el("div","ratio");
+    var gpct = Math.round(a30.clearDays / a30.allDays * 100);
+    var g = el("span"); g.style.cssText = "width:" + gpct + "%;background:var(--good)";
+    var hb = el("span"); hb.style.cssText = "width:" + (100-gpct) + "%;background:var(--s3)";
+    ratio.appendChild(g); ratio.appendChild(hb);
+    strip.appendChild(ratio);
+    var rlab = el("div","ratio-lab");
+    rlab.appendChild(el("span", null, a30.clearDays + " clear"));
+    rlab.appendChild(el("span", null, a30.hardDays + " with an episode"));
+    strip.appendChild(rlab);
+  }
+  var go = el("div","go");
+  go.appendChild(el("span", null, "Open the pages you can share"));
+  go.appendChild(el("span", null, "→"));
+  strip.appendChild(go);
+  strip.addEventListener("click", function(){ current = "page"; window.scrollTo(0,0); render(); });
+  view.appendChild(strip);
+
+  var weekAgo = Date.now() - 7*86400000;
+  var recent = es.filter(function(e){ return new Date(e.at).getTime() >= weekAgo; });
+  var older  = es.filter(function(e){ return new Date(e.at).getTime() <  weekAgo; });
+
+  if(recent.length){
+    view.appendChild(el("div","daylabel","This week"));
+    renderDayStacks(view, recent);
+  }
+
+  if(older.length){
+    var groups = {}, order = [];
+    older.forEach(function(e){
+      var d = new Date(e.at);
+      var key = d.getFullYear() + "-" + pad(d.getMonth()+1);
+      if(!groups[key]){ groups[key] = {label: MONS[d.getMonth()] + " " + d.getFullYear(), items:[]}; order.push(key); }
+      groups[key].items.push(e);
+    });
+    var sep = el("div","daylabel","Earlier");
+    sep.style.marginTop = "26px";
+    view.appendChild(sep);
+    order.forEach(function(key){
+      var g = groups[key];
+      var open = !!expandedMonths[key];
+      var head = el("button","mhead"); head.type = "button";
+      head.setAttribute("aria-expanded", open ? "true" : "false");
+      head.appendChild(el("span","caret","▶"));
+      head.appendChild(el("span","name", g.label));
+      var ga = analyse(g.items);
+      head.appendChild(el("span","cnt", ga.episodes + " ep · " + ga.allDays + " days"));
+      view.appendChild(head);
+      var box = el("div","mgroup");
+      box.hidden = !open;
+      renderDayStacks(box, g.items);
+      view.appendChild(box);
+      head.addEventListener("click", function(){
+        expandedMonths[key] = !expandedMonths[key];
+        head.setAttribute("aria-expanded", expandedMonths[key] ? "true" : "false");
+        box.hidden = !expandedMonths[key];
+      });
+    });
+  }
+}
+
+// One block per calendar day: the verdict on top, the day's episodes beneath it.
+function renderDayStacks(host, list){
+  var days = {}, order = [];
+  list.forEach(function(e){
+    var k = toDateInput(new Date(e.at));
+    if(!days[k]){ days[k] = {good:null, hard:[]}; order.push(k); }
+    if(e.kind === "good") days[k].good = e; else days[k].hard.push(e);
+  });
+  order.forEach(function(k){
+    var g = days[k];
+    var anchor = g.good || g.hard[0];
+    var d = new Date(anchor.at);
+    var dl = el("div","daylabel", fmtDayHeading(d));
+    dl.style.marginTop = "14px";
+    host.appendChild(dl);
+
+    var stack = el("div","day-stack" + (g.good ? "" : " no-verdict"));
+    if(g.good){
+      stack.appendChild(verdictRow(g.good, g.hard.length));
+      if(!g.hard.length){
+        stack.appendChild(el("p","verdict-note","Nothing happened worth logging."));
+      }
+    }
+    g.hard.sort(function(a,b){ return new Date(b.at) - new Date(a.at); })
+          .forEach(function(e){ stack.appendChild(entryCard(e, new Date(e.at))); });
+    host.appendChild(stack);
+  });
+}
+
+function verdictRow(e, hardCount){
+  var row = el("button","goodrow" + (hardCount ? " has-below" : "")); row.type = "button";
+  row.appendChild(el("span","dot"));
+  var txt = el("span","txt", hardCount
+    ? "Something happened, but overall a good day"
+    : "Good day");
+  if(e.note){
+    txt.appendChild(document.createTextNode(" "));
+    txt.appendChild(el("span","note", e.note));
+  }
+  row.appendChild(txt);
+  row.addEventListener("click", function(){ viewEntry(e); });
+  return row;
+}
+
+function entryCard(e, d){
+  var card = el("button","entry"); card.type = "button";
+  var top = el("div","entry-top");
+  top.appendChild(el("span","entry-trigger", e.trigger || "Something happened"));
+  top.appendChild(el("span","entry-time", fmtTime(d)));
+  card.appendChild(top);
+
+  var st = STAGES[(e.stage||4) - 1];
+  var what = el("div","entry-what");
+  what.textContent = st ? st.name : "";
+  if((e.behaviors||[]).length) what.textContent += " · " + e.behaviors.join(", ");
+  card.appendChild(what);
+
+  var rec = el("div","recovery");
+  var bar = el("span","rbar");
+  var fill = el("span","rfill");
+  fill.style.width = minsWidth(e.minutes) + "%";
+  fill.style.background = minsColor(e.minutes);
+  bar.appendChild(fill);
+  rec.appendChild(bar);
+  rec.appendChild(el("span","rmin", fmtMins(e.minutes)));
+  card.appendChild(rec);
+
+  var tools = e.tools || [];
+  var none = tools.some(function(t){ return /^nothing/i.test(t); });
+  var foot = el("div","rtool" + (none ? " none" : ""));
+  if(tools.length){
+    foot.appendChild(el("span","dot"));
+    foot.appendChild(el("span", null, tools.join(" + ")));
+  }
+  var tags = el("span");
+  tags.style.cssText = "margin-left:auto;display:flex;gap:5px;flex:none";
+  if(e.flagged) tags.appendChild(el("span","src-tag","⚑"));
+  if(e.source && e.source !== "Home") tags.appendChild(el("span","src-tag", e.source));
+  if(tags.childNodes.length) foot.appendChild(tags);
+  if(tools.length || tags.childNodes.length) card.appendChild(foot);
+
+  if(e.note) card.appendChild(el("div","entry-note", e.note));
+
+  card.addEventListener("click", function(){ viewEntry(e); });
+  return card;
+}
+
+/* ---- detail ---- */
+var detail = document.getElementById("detail");
+var detailBody = document.getElementById("detailBody");
+var detailCrumb = document.getElementById("detailCrumb");
+function openDetail(){
+  detail.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.getElementById("detailBack").focus({preventScroll:true});
+}
+function closeDetail(){
+  detail.classList.remove("open");
+  document.body.style.overflow = "";
+  clear(detailBody);
+}
+document.getElementById("detailBack").addEventListener("click", closeDetail);
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape" && detail.classList.contains("open")) closeDetail();
+});
+
+function viewEntry(e){
+  var d = new Date(e.at);
+  detailCrumb.textContent = e.kind === "good" ? "Good day" : (e.source || "Home");
+  clear(detailBody);
+  var inner = el("div","reader-inner");
+
+  var hero = el("div","d-hero");
+  hero.appendChild(el("span","when", fmtDayHeading(d) + " · " + fmtTime(d)));
+  var h1 = el("h1", null, e.kind === "good" ? "A good day" : (e.trigger || "Something happened"));
+  h1.id = "detailTitle";
+  hero.appendChild(h1);
+  inner.appendChild(hero);
+
+  if(e.kind === "good"){
+    var gs = el("div","d-sec");
+    gs.appendChild(el("h4", null, "Note"));
+    gs.appendChild(el("p", e.note ? null : "quiet", e.note || "No note. That's fine — the day itself is the data."));
+    inner.appendChild(gs);
+  } else {
+    var st = STAGES[(e.stage||4) - 1];
+    var s0 = el("div","d-sec");
+    s0.appendChild(el("h4", null, "How far it got"));
+    var pills0 = el("div","d-pills");
+    pills0.appendChild(el("span","d-pill" + ((e.stage||4) === 4 ? " warn" : ""), st ? st.n + " · " + st.name : "—"));
+    s0.appendChild(pills0);
+    if(st) s0.appendChild(el("p","quiet", st.ds));
+    inner.appendChild(s0);
+
+    var s2 = el("div","d-sec");
+    s2.appendChild(el("h4", null, "Back to baseline"));
+    var rec = el("div","d-rec");
+    var big = el("div","big", String(e.minutes));
+    big.appendChild(el("small", null, "minutes"));
+    rec.appendChild(big);
+    var pv = el("div","slider-preview");
+    var pf = el("span","rfill");
+    pf.style.width = minsWidth(e.minutes) + "%";
+    pf.style.background = minsColor(e.minutes);
+    pv.appendChild(pf);
+    rec.appendChild(pv);
+    var all = analyse();
+    if(all.n > 2){
+      var diff = e.minutes - all.typical;
+      var word = Math.abs(diff) <= 3 ? "About the same as" : (diff > 0 ? "Longer than" : "Shorter than");
+      rec.appendChild(el("div","cmp2", word + " the usual " + fmtMins(all.typical) + "."));
+    }
+    s2.appendChild(rec);
+    inner.appendChild(s2);
+
+    var s3 = el("div","d-sec");
+    s3.appendChild(el("h4", null, "What helped"));
+    var p3 = el("div","d-pills");
+    if((e.tools||[]).length){
+      e.tools.forEach(function(t){
+        p3.appendChild(el("span","d-pill" + (/^nothing/i.test(t) ? " warn" : ""), t));
+      });
+    } else p3.appendChild(el("p","quiet","Not recorded"));
+    s3.appendChild(p3);
+    inner.appendChild(s3);
+
+    if((e.behaviors||[]).length){
+      var s1 = el("div","d-sec");
+      s1.appendChild(el("h4", null, "What it looked like"));
+      var p1 = el("div","d-pills");
+      e.behaviors.forEach(function(b){ p1.appendChild(el("span","d-pill", b)); });
+      s1.appendChild(p1);
+      inner.appendChild(s1);
+    }
+
+    var s4 = el("div","d-sec");
+    s4.appendChild(el("h4", null, "Where"));
+    s4.appendChild(el("p", null, (e.source || "Home") + (e.flagged ? "  ⚑ flagged for the doctor" : "")));
+    inner.appendChild(s4);
+
+    if(e.note){
+      var s5 = el("div","d-sec");
+      s5.appendChild(el("h4", null, "Note"));
+      s5.appendChild(el("p", null, e.note));
+      inner.appendChild(s5);
+    }
+  }
+
+  var s6 = el("div","d-sec");
+  s6.appendChild(el("h4", null, "History"));
+  var hist = el("div","meta");
+  hist.style.marginTop = "0";
+  hist.appendChild(el("div", null, "Added " + fmtStamp(e.createdAt)));
+  if(e.updatedAt) hist.appendChild(el("div", null, "Edited " + fmtStamp(e.updatedAt)));
+  s6.appendChild(hist);
+  inner.appendChild(s6);
+
+  var acts = el("div","d-actions");
+  var bEdit = el("button","d-edit", e.kind === "good" ? "Add a note" : "Edit"); bEdit.type = "button";
+  bEdit.addEventListener("click", function(){
+    closeDetail();
+    if(e.kind === "good") editGoodDay(e); else editEntry(e);
+  });
+  var bDel = el("button","d-del","Delete"); bDel.type = "button";
+  bDel.addEventListener("click", function(){
+    askConfirm("Delete this entry? This can't be undone.", "Delete", function(){
+      DATA.entries = DATA.entries.filter(function(x){ return x.id !== e.id; });
+      save(); closeDetail(); render(); toast("Entry deleted");
+    });
+  });
+  acts.appendChild(bEdit); acts.appendChild(bDel);
+  inner.appendChild(acts);
+
+  detailBody.appendChild(inner);
+  detailBody.scrollTop = 0;
+  openDetail();
+}
+
+function editGoodDay(e){
+  var draft = JSON.parse(JSON.stringify(e));
+  sheetMode = "good";
+  editing = { draft:draft, isNew:false, dirty:false };
+  sheetTitle.textContent = "Good day";
+  sheetSave.textContent = "Save changes";
+  autosaveNote.hidden = true;
+  clear(sheetBody);
+
+  var f = el("div","field");
+  var l = el("label"); l.textContent = "What made it good ";
+  l.appendChild(el("span","hint","— optional, but worth remembering"));
+  f.appendChild(l);
+  var ta = el("textarea"); ta.value = draft.note || "";
+  ta.placeholder = "He removed himself from the noise before it got bad";
+  ta.addEventListener("input", function(){ draft.note = ta.value; });
+  f.appendChild(ta);
+  sheetBody.appendChild(f);
+
+  var fw = el("div","field");
+  fw.appendChild(el("label", null, "Date"));
+  var dIn = el("input"); dIn.type = "date"; dIn.value = toDateInput(new Date(draft.at));
+  dIn.addEventListener("change", function(){
+    var nd = fromInputs(dIn.value, toTimeInput(new Date(draft.at)));
+    if(nd) draft.at = nd.toISOString();
+  });
+  fw.appendChild(dIn);
+  sheetBody.appendChild(fw);
+
+  var del = el("button","btn-ghost","Delete this entry"); del.type = "button";
+  del.addEventListener("click", function(){
+    askConfirm("Delete this entry? This can't be undone.", "Delete", function(){
+      DATA.entries = DATA.entries.filter(function(x){ return x.id !== draft.id; });
+      save(); closeSheet(); render(); toast("Entry deleted");
+    });
+  });
+  sheetBody.appendChild(del);
+  openSheet();
+}
+
+var ARTICLES = [
+{
+  id:"ai",
+  eyebrow:"Using AI well",
+  cover:"linear-gradient(135deg,#2C574B 0%,#3E7A65 100%)",
+  mark:"✧",
+  title:"How to actually use AI with an autistic child",
+  dek:"The honest version: it's a tool for you, and only sometimes for them.",
+  read:"7 min",
+  updated:"July 2026",
+  body:`
+<p class="a-p">Every app, clinic and parenting group is telling you AI will change everything for your child. Most of that is being said by people selling something. Here is what the evidence actually supports, what to avoid entirely, and where the line sits by age.</p>
+
+<p class="a-p">The single most useful reframe: <strong>for most families, the person who should be using AI is the parent, not the child.</strong> You are the one drowning in paperwork, appointment notes, insurance letters and school emails. That is where the hours come back.</p>
+
+<h2 class="a-h">What it's genuinely good at — for you</h2>
+
+<p class="a-p">These are the uses with the least risk and the highest payoff, because you stay in the loop and nothing lands on your child unfiltered.</p>
+
+<ul class="a-ul">
+  <li><strong>Translating the paperwork.</strong> Paste an evaluation report or IEP draft and ask what each section means in plain English, and what it commits the school to. You'll spot vague language you'd otherwise sign.</li>
+  <li><strong>Drafting the hard email.</strong> "Write a polite but firm request for an independent evaluation" gets you a first draft in seconds. You edit; you send.</li>
+  <li><strong>Preparing for the meeting.</strong> Ask it to play the school's side and push back on your requests, so you hear the objections before the room does.</li>
+  <li><strong>Writing social stories.</strong> A short, first-person script for a haircut, a dentist visit, a new sitter — generated in your child's vocabulary, then edited by you.</li>
+  <li><strong>Making sense of your own log.</strong> Paste an exported log and ask what's most frequent. Ask for counts, never for causes.</li>
+</ul>
+
+<div class="a-call">
+  <span class="lab">The prompt that works best</span>
+  <p>Give it the role, the audience and the constraint: "You're helping a parent prepare for an IEP meeting. My son is 7, autistic, struggles with transitions. Write five questions I should ask about how transitions will be handled. Keep them short and specific."</p>
+</div>
+
+<h2 class="a-h">Where the line is, by age</h2>
+
+<p class="a-p">Common Sense Media published age guidance in June 2026 after testing chatbots directly with kids. Their bands are a sensible floor, and they apply to autistic children too — with one adjustment noted below.</p>
+
+<div class="a-age">
+  <span class="band">UNDER 5</span>
+  <h4>No chatbots</h4>
+  <p>Children this age can't reliably tell AI from a person. The moments you'd be tempted to outsource — reading aloud, storytelling — are the ones doing the most developmental work.</p>
+</div>
+
+<div class="a-age">
+  <span class="band">AGES 6–12</span>
+  <h4>Only with you sitting there</h4>
+  <p>Chatbots make mistakes, agree too readily, and can surface content you didn't want. Shared use is fine; solo use isn't. Treat it like a kitchen knife, not a toy.</p>
+</div>
+
+<div class="a-age">
+  <span class="band">AGES 13–17</span>
+  <h4>Homework and creativity, supervised</h4>
+  <p>The useful test is one question: is this helping them learn, or helping them finish? Ask them to explain the answer back to you in their own words.</p>
+</div>
+
+<div class="a-age">
+  <span class="band">ANY AGE UNDER 18</span>
+  <h4>Never for comfort, friendship, or mental health</h4>
+  <p>This is the rule with the least wiggle room, and the one most worth holding.</p>
+</div>
+
+<h2 class="a-h">Why the companionship rule matters more for our kids</h2>
+
+<p class="a-p">A 2025 Common Sense study found 72% of teens had used an AI companion at least once, and about a third said those conversations were as satisfying as talking to real people. The organisation concluded companion bots pose an unacceptable risk to under-18s. In early 2026, Character.AI and Google settled multiple wrongful-death suits brought by families of teenagers.</p>
+
+<p class="a-p">Now add the part that's specific to us. A child who finds human interaction effortful and unpredictable is being offered something that never gets tired, never misreads them, and never asks for anything back. That is not a neutral trade. It is precisely the child for whom a frictionless substitute is most appealing and most costly.</p>
+
+<blockquote class="a-quote">A bot that always agrees is the worst possible mirror for a kid who is already struggling to read other people.</blockquote>
+
+<p class="a-p">Testing has repeatedly found chatbots miss signs of depression, anxiety and self-harm unless a child states them in plain words — and then soften their warnings when pushed. Autistic kids often don't state things in plain words. That gap is where the danger sits.</p>
+
+<h2 class="a-h">The one exception worth knowing</h2>
+
+<p class="a-p">Communication tools are a different category from chatbots. AAC apps — the picture-and-symbol systems that let a minimally speaking child build sentences — are established practice, prescribed by speech-language pathologists, and increasingly use AI for word prediction. That is not a companion. It is a voice.</p>
+
+<p class="a-p">If your child is minimally speaking, the conversation to have is with an SLP about AAC, not with a chatbot company about engagement.</p>
+
+<hr class="a-rule">
+
+<h2 class="a-h">Four failure modes to watch for in yourself</h2>
+
+<p class="a-sh">1 · It will agree with you</p>
+<p class="a-p">Chatbots are built to be agreeable. Bring it a theory about your child — "I think dairy is causing the meltdowns" — and it will help you build the case. Ask for the argument against your theory, every time.</p>
+
+<p class="a-sh">2 · It will invent things confidently</p>
+<p class="a-p">Especially citations, statutes, and deadlines. Anything legal or medical gets verified against the actual source before you act on it.</p>
+
+<p class="a-sh">3 · It doesn't know your child</p>
+<p class="a-p">It knows autism in general, which is a category so broad as to be nearly useless at the individual level. Your log knows your child. The AI only knows what you paste into it.</p>
+
+<p class="a-sh">4 · It is not private by default</p>
+<p class="a-p">Consumer chatbots are not covered by medical privacy law. Don't paste full names, dates of birth, addresses or medical record numbers. Strip identifiers first — "my 7-year-old son" is enough context for any useful answer.</p>
+
+<div class="a-call warn">
+  <span class="lab">Never</span>
+  <p>Never use a chatbot for diagnosis, medication questions, crisis situations, or as a stand-in for therapy. If your child is in danger, you need a human being with a licence and a phone number, not a text box.</p>
+</div>
+
+<h2 class="a-h">Where to start this week</h2>
+
+<ul class="a-ul">
+  <li>Take the most confusing document in your file and ask for a plain-English summary plus three questions you should be asking.</li>
+  <li>Write one social story for the thing coming up that you're dreading.</li>
+  <li>If you have a teenager, ask them what they use and don't react to the answer — nearly half of parents don't know.</li>
+</ul>
+
+<div class="a-src">
+  <h5>Sources</h5>
+  <ul>
+    <li>Common Sense Media — AI Chatbots and Your Child: Age and Stage Guidance, June 2026</li>
+    <li>Common Sense Media — Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions, 2025</li>
+    <li>Child Mind Institute — AI Chatbots and Teens, reviewed March 2026</li>
+    <li>American Psychological Association — guidance for parents on teens and chatbots, February 2026</li>
+    <li>Stanford SCALE Initiative — review of 800+ studies on AI in K–12 education</li>
+  </ul>
+  <p class="a-disc">General information for parents, not medical or clinical advice. Talk to your child's care team about anything specific to them.</p>
+</div>
+`
+},
+{
+  id:"school",
+  eyebrow:"Choosing a school",
+  cover:"linear-gradient(135deg,#7A4E2E 0%,#C08A4E 100%)",
+  mark:"◫",
+  title:"Public, charter, or private — what actually changes",
+  dek:"One legal fact decides more than every tour you'll take. Most parents hear it too late.",
+  read:"9 min",
+  updated:"July 2026",
+  body:`
+<p class="a-p">School choice for an autistic child gets argued about as though it's a values question. It isn't, or at least not first. It's a question about which supports are legally guaranteed, which are discretionary, and which disappear the moment you sign an enrolment form.</p>
+
+<p class="a-p">Start with the fact that reorders everything else.</p>
+
+<div class="a-call">
+  <span class="lab">The fact that decides most of it</span>
+  <p>Your child's right to services under federal special education law attaches to <strong>public</strong> enrolment. Enrol them privately by choice and that individual right does not travel with them. Charter schools are public schools, so the right stays. Private schools are not, so it doesn't.</p>
+</div>
+
+<h2 class="a-h">Public district school</h2>
+
+<p class="a-p">Under IDEA — the federal special education law — an eligible child is entitled to a free appropriate public education, delivered through an IEP written by a team that includes you, in the least restrictive environment appropriate for them.</p>
+
+<p class="a-p">What that buys you in practice:</p>
+
+<ul class="a-ul">
+  <li><strong>A binding document.</strong> The IEP isn't a wish list. Services in it must be delivered.</li>
+  <li><strong>A seat at the table.</strong> You are a required member of the team, and you can call a meeting.</li>
+  <li><strong>Real recourse.</strong> Mediation, state complaints, and due process hearings exist when the school doesn't deliver.</li>
+  <li><strong>Child Find.</strong> The district has an affirmative duty to identify and evaluate children it suspects have a disability. You don't have to prove anything first.</li>
+  <li><strong>Free evaluations,</strong> and the right to request an independent one at public expense if you disagree with theirs.</li>
+</ul>
+
+<p class="a-p">The trade is that quality varies enormously by district and even by building, and "appropriate" is a legal standard, not a synonym for excellent. A large district may have a full continuum of placements. A small one may have exactly one classroom and a long wait.</p>
+
+<h2 class="a-h">Charter school</h2>
+
+<p class="a-p">The most common misconception in this whole conversation: a charter school is a public school. The US Department of Education has been explicit that children with disabilities attending public charters, and their parents, keep every right and protection under IDEA that they'd have in any other public school. Child Find applies. FAPE applies. Section 504 and the ADA apply. None of it is waived by enrolling.</p>
+
+<p class="a-p">A charter also cannot decline to serve your child because the service isn't in its current programme. If it's an independent district in its own right, it has to build the service, contract it out, or otherwise ensure it happens — at no cost to you.</p>
+
+<p class="a-sh">The question to ask on the tour</p>
+<p class="a-p">"Are you your own school district, or are you part of the local one?" This single answer tells you who is legally on the hook, who writes the IEP, and who you escalate to. Charters are structured both ways depending on the state, and staff should be able to answer it instantly. Hesitation is information.</p>
+
+<div class="a-call warn">
+  <span class="lab">Watch for</span>
+  <p>Some charters are excellent at inclusion. Others quietly counsel families out — long waitlists that never move, repeated suggestions that "he might be happier somewhere with more support." That's a soft version of something that isn't legal. Ask directly how many students on IEPs they currently serve, and what their most intensive support looks like.</p>
+</div>
+
+<h2 class="a-h">Private school</h2>
+
+<p class="a-p">Here's where it changes, and where families are most often surprised.</p>
+
+<p class="a-p">When you enrol your child privately by your own choice — "parentally placed," in the statute — your child no longer has an individual right to special education services. The local district still has to find and evaluate children in private schools in its boundaries, and it must spend a proportionate share of its federal funds on that population as a group. But the district decides how to spend it, and the decision about who gets what is theirs, not yours.</p>
+
+<p class="a-p">If your child is chosen to receive services, the document is a <strong>services plan</strong>, not an IEP. It is generally narrower, it covers only what the district has offered, and it carries none of the enforceable individual entitlement an IEP does.</p>
+
+<p class="a-p">Two protections do survive: Section 504 and the ADA still prohibit disability discrimination, so you can request reasonable accommodations. Most private schools are covered — religious schools are a partial exception under the ADA, so check.</p>
+
+<p class="a-sh">The important asterisk</p>
+<p class="a-p">If a public district places your child in a private school because it can't provide an appropriate programme itself, that's a completely different situation. The district funds it and the full IDEA rights come with them. That's a placement, not a choice.</p>
+
+<blockquote class="a-quote">A private school with a great reputation and no special education staff may serve your child worse than an average public school with a strong team.</blockquote>
+
+<h2 class="a-h">Why private schools can't be compared as a group</h2>
+
+<p class="a-p">"Private school" describes a funding model, not an educational one. In practice the range runs from schools built specifically for autistic and learning-disabled students, with clinicians on staff, through to selective academic schools with no support staffing at all and an unstated expectation that students arrive needing nothing.</p>
+
+<p class="a-p">Both of those are private schools. They will serve your child in opposite ways. Reputation, tuition and admissions selectivity tell you almost nothing about which one you're looking at.</p>
+
+<h2 class="a-h">If a state scholarship or voucher is on the table</h2>
+
+<p class="a-p">Many states now offer scholarships or education savings accounts for students with disabilities. They can be genuinely useful — and in several states, accepting one requires signing a form acknowledging that you're giving up your child's entitlement to services from the public system while they use it.</p>
+
+<p class="a-p">That may still be the right call. But read the acknowledgment yourself, in full, before signing. It is usually one paragraph and it is usually the most consequential paragraph in the packet.</p>
+
+<hr class="a-rule">
+
+<h2 class="a-h">What to actually ask on a tour</h2>
+
+<p class="a-p">Skip the mission statement. These questions produce answers you can compare across every school on your list.</p>
+
+<ul class="a-ul">
+  <li><strong>"Who provides speech and OT here, on what schedule, and where does it happen?"</strong> Pull-out, push-in, and contracted-once-a-month are wildly different answers.</li>
+  <li><strong>"What is your plan when a student is dysregulated?"</strong> Listen for whether it's a place and a person, or a call home. Ask directly about restraint and seclusion policy.</li>
+  <li><strong>"How many students here have an IEP or a services plan?"</strong> A school that doesn't know isn't tracking it.</li>
+  <li><strong>"What does the day look like for a student who needs a break every hour?"</strong> Ask them to walk you through it minute by minute.</li>
+  <li><strong>"Who is my child's person?"</strong> Every child who struggles needs one adult in the building who knows them. If nobody can name that role, it doesn't exist.</li>
+  <li><strong>"Can I see the space where the support happens?"</strong> A converted storage closet tells you everything the brochure won't.</li>
+  <li><strong>"How do you handle a student who has never had a friend?"</strong> Watch whether they've thought about it at all.</li>
+</ul>
+
+<h2 class="a-h">Decide against your child, not against the debate</h2>
+
+<p class="a-p">School choice is a loud political argument right now, and it's easy to absorb a position by osmosis from people whose children are nothing like yours. None of that has any bearing on which building your child should walk into in August.</p>
+
+<p class="a-p">Three questions actually settle it:</p>
+
+<ul class="a-ul">
+  <li><strong>What does my child need that is non-negotiable?</strong> Write it down before any tour. Sensory space. A predictable schedule. Speech three times a week.</li>
+  <li><strong>Which of those is legally guaranteed here, and which depends on goodwill?</strong> Goodwill is real, and it leaves when the principal does.</li>
+  <li><strong>What's my recourse if it stops working in March?</strong> In a public setting you have a process. In a private one you have a conversation.</li>
+</ul>
+
+<p class="a-p">Your log helps here more than you'd expect. Walking into a tour able to say "he averages about twenty minutes to recover and the thing that works is a quiet space with headphones" turns an abstract conversation into a concrete one. You'll learn more from how they respond to that sentence than from the rest of the visit.</p>
+
+<div class="a-src">
+  <h5>Sources</h5>
+  <ul>
+    <li>US Dept of Education, OSEP — Questions and Answers on Serving Children with Disabilities Placed by Their Parents in Private Schools, rev. Feb 2022</li>
+    <li>US Dept of Education, OSERS — FAQ on the Rights of Students with Disabilities in Public Charter Schools under IDEA</li>
+    <li>34 C.F.R. §§ 300.130–300.144 (equitable services); § 300.137 (no individual right); § 300.209 (charter schools)</li>
+    <li>ASHA — IDEA Part B issue brief on parentally placed private school children</li>
+    <li>Understood.org — The difference between IEPs and service plans</li>
+  </ul>
+  <p class="a-disc">General information, not legal advice. Special education law varies by state and situation — a parent advocate or education attorney is worth the consultation before you sign anything.</p>
+</div>
+`
+}
+];
+
+var reader = document.getElementById("reader");
+var readerBody = document.getElementById("readerBody");
+var readerCrumb = document.getElementById("readerCrumb");
+var readerBar = document.getElementById("readerBar");
+
+function openArticle(a){
+  readerCrumb.textContent = a.eyebrow;
+  readerBody.innerHTML =
+    '<div class="reader-inner"><div class="a-hero"><span class="eyebrow"></span>' +
+    '<h1 id="readerTitle"></h1><p class="dek"></p><div class="stamp"></div></div>' +
+    '<div class="a-body"></div></div>';
+  readerBody.querySelector(".a-hero .eyebrow").textContent = a.eyebrow;
+  readerBody.querySelector(".a-hero h1").textContent = a.title;
+  readerBody.querySelector(".a-hero .dek").textContent = a.dek;
+  readerBody.querySelector(".a-hero .stamp").appendChild(el("div", null, a.read + " read · updated " + a.updated));
+  readerBody.querySelector(".a-body").innerHTML = a.body;
+  readerBody.scrollTop = 0;
+  readerBar.style.width = "0%";
+  reader.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.getElementById("readerBack").focus({preventScroll:true});
+}
+function closeArticle(){
+  reader.classList.remove("open");
+  document.body.style.overflow = "";
+  readerBody.innerHTML = "";
+}
+document.getElementById("readerBack").addEventListener("click", closeArticle);
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape" && reader.classList.contains("open")) closeArticle();
+});
+readerBody.addEventListener("scroll", function(){
+  var max = readerBody.scrollHeight - readerBody.clientHeight;
+  readerBar.style.width = (max > 0 ? Math.min(100, Math.max(0, readerBody.scrollTop / max * 100)) : 0) + "%";
+});
+
+function renderRead(){
+  topTitle.textContent = "Reading";
+  topSub.textContent = ARTICLES.length + " pieces";
+  view.appendChild(el("p","read-intro","Short, sourced pieces on the things that are hard to get straight answers about."));
+  ARTICLES.forEach(function(a){
+    var card = el("button","art-card"); card.type = "button";
+    var cover = el("div","art-cover");
+    cover.style.background = a.cover;
+    cover.appendChild(el("span","mark", a.mark));
+    cover.appendChild(el("span","eyebrow", a.eyebrow));
+    cover.appendChild(el("h2", null, a.title));
+    card.appendChild(cover);
+    var meta = el("div","art-meta");
+    meta.appendChild(el("p","dek", a.dek));
+    var foot = el("div","foot");
+    foot.appendChild(el("span", null, a.read + " read"));
+    foot.appendChild(el("span", null, "·"));
+    foot.appendChild(el("span", null, a.updated));
+    foot.appendChild(el("span","go","Read →"));
+    meta.appendChild(foot);
+    card.appendChild(meta);
+    card.addEventListener("click", function(){ openArticle(a); });
+    view.appendChild(card);
+  });
+  var more = el("p");
+  more.style.cssText = "font-size:13px;color:var(--ink-3);text-align:center;margin:22px 0 0;line-height:1.6";
+  more.textContent = "More pieces as we write them. Nothing here is sponsored, and nothing here is medical advice.";
+  view.appendChild(more);
+}
+
+/* ============================================================
+   PAGES
+   ============================================================ */
+function renderPage(){
+  var a = analyse();
+  topTitle.textContent = "Pages";
+  topSub.textContent = a.nAll ? "Built from " + a.nAll + (a.nAll === 1 ? " entry" : " entries") : "Nothing to build from yet";
+
+  var seg = el("div","seg noprint");
+  seg.style.gridTemplateColumns = "1fr 1fr 1fr";
+  [["handoff","Sitters"],["doctor","Doctor"],["changes","Changes"]].forEach(function(p){
+    var b = el("button", null, p[1]); b.type = "button";
+    b.setAttribute("aria-pressed", pageMode === p[0] ? "true" : "false");
+    b.addEventListener("click", function(){ pageMode = p[0]; window.scrollTo(0,0); render(); });
+    seg.appendChild(b);
+  });
+  view.appendChild(seg);
+
+  if(pageMode === "changes"){ renderChanges(); return; }
+
+  var s = DATA.settings;
+  var hasProfile = !!(s.loves || s.proudOf || s.laughs || s.communication || s.pleaseDont || s.worthKnowing);
+  if(!a.nAll && !hasProfile){
+    var emp = el("div","empty");
+    emp.appendChild(el("h2", null, "These pages build themselves"));
+    emp.appendChild(el("p", null, "Fill in a few lines under Setup and you'll have a real page to hand someone tonight. It gets sharper as you log."));
+    var go = el("button","btn-quiet","Go to Setup"); go.type = "button";
+    go.addEventListener("click", function(){ current = "settings"; window.scrollTo(0,0); render(); });
+    emp.appendChild(go);
+    view.appendChild(emp);
+    return;
+  }
+
+  if(pageMode === "handoff") renderHandoff(a);
+  else renderDoctor(a);
+}
+
+function lowNBanner(n){
+  if(n >= 10) return null;
+  var w = el("div","banner warn noprint");
+  w.textContent = "Only " + n + " " + (n === 1 ? "episode" : "episodes") + " logged so far. These are counts of what you've written down, not conclusions — patterns get trustworthy somewhere north of 20.";
+  return w;
+}
+
+function renderHandoff(a){
+  var s = DATA.settings;
+  var warn = lowNBanner(a.episodes); if(warn) view.appendChild(warn);
+
+  var paper = el("div","paper");
+  var mast = el("div","p-masthead");
+  mast.appendChild(mark("kcPlain"));
+  mast.appendChild(el("span","nm","Kasey"));
+  mast.appendChild(el("span","rule"));
+  paper.appendChild(mast);
+  var head = el("div","p-head");
+  head.appendChild(el("h2", null, childName() + (s.childAge ? ", " + s.childAge : "")));
+  head.appendChild(el("div","who","For teachers, sitters, and anyone caring for " + (s.childName || "them")));
+  var gen = el("div","gen");
+  gen.appendChild(el("div", null, "Generated " + fmtStamp(new Date().toISOString())));
+  if(a.episodes) gen.appendChild(el("div", null, "Usually settles in about " + fmtMins(a.typical) +
+    (a.allDays ? " · " + a.clearDays + " of the last " + a.allDays + " days logged had no episode at all" : "")));
+  if(s.contact) gen.appendChild(el("div", null, s.contact));
+  head.appendChild(gen);
+  paper.appendChild(head);
+
+  // WHO HE IS — leads the page
+  if(s.loves || s.proudOf || s.laughs){
+    var hero = el("div","p-block hero");
+    hero.appendChild(el("h3", null, "Start here"));
+    if(s.loves)   hero.appendChild(el("p","p-prose","Loves: " + s.loves));
+    if(s.proudOf){ var p2 = el("p","p-prose","Proud of: " + s.proudOf); p2.style.marginTop = "7px"; hero.appendChild(p2); }
+    if(s.laughs){  var p3 = el("p","p-prose","Makes him laugh: " + s.laughs); p3.style.marginTop = "7px"; hero.appendChild(p3); }
+    paper.appendChild(hero);
+  }
+
+  if(s.alwaysTrue){
+    var bT = el("div","p-block");
+    bT.appendChild(el("h3", null, "Always true"));
+    bT.appendChild(el("p","p-prose", s.alwaysTrue));
+    paper.appendChild(bT);
+  }
+
+  // the sequence
+  if(a.n){
+    var bS = el("div","p-block");
+    bS.appendChild(el("h3", null, "How it usually goes"));
+    STAGES.forEach(function(st){
+      var row = el("div","p-stage");
+      row.appendChild(el("span","n", String(st.n)));
+      var body = el("span","b");
+      body.appendChild(el("span","nm", st.name));
+      var cnt = a.stages[st.n] || 0;
+      body.appendChild(el("span","ds", st.ds + (cnt ? "  ·  " + cnt + "×" : "")));
+      row.appendChild(body);
+      bS.appendChild(row);
+    });
+    var note = el("p","p-prose");
+    note.style.cssText = "margin-top:10px;font-size:13px";
+    note.textContent = "If you can help at step 1 or 2, it often doesn't get further. Once it's at 3 or 4, the goal is safety and quiet, not talking him out of it.";
+    bS.appendChild(note);
+    paper.appendChild(bS);
+  }
+
+  if(a.topTriggers.length){
+    var b1 = el("div","p-block");
+    b1.appendChild(el("h3", null, "What comes before"));
+    var ul1 = el("ul","p-list");
+    a.topTriggers.slice(0,6).forEach(function(t){
+      var li = el("li");
+      li.appendChild(el("span", null, t.name));
+      li.appendChild(el("span","val", t.n + "×"));
+      ul1.appendChild(li);
+    });
+    b1.appendChild(ul1);
+    paper.appendChild(b1);
+  }
+
+  if(a.helps.length){
+    var b2 = el("div","p-block");
+    b2.appendChild(el("h3", null, "What helps, fastest first"));
+    var ul2 = el("ul","p-list");
+    a.helps.slice(0,6).forEach(function(t){
+      var li = el("li");
+      li.appendChild(el("span", null, t.name + (t.n < 2 ? " (used once)" : "")));
+      li.appendChild(el("span","val" + (t.n >= 2 ? " good" : ""), fmtMins(t.med)));
+      ul2.appendChild(li);
+    });
+    b2.appendChild(ul2);
+    if(a.nothing){
+      var nn = el("p","p-prose");
+      nn.style.cssText = "margin-top:9px;font-size:12.5px;color:var(--ink-3)";
+      nn.textContent = "Nothing we tried helped in " + a.nothing + " of " + a.episodes + ". That happens, and it isn't a failure on anyone's part.";
+      b2.appendChild(nn);
+    }
+    paper.appendChild(b2);
+  }
+
+  var hMeds = currentMeds();
+  if(hMeds.length){
+    var bMed = el("div","p-block");
+    bMed.appendChild(el("h3", null, "Medication"));
+    var ulM = el("ul","p-list");
+    hMeds.forEach(function(c){
+      var li = el("li");
+      li.appendChild(el("span", null, c.label));
+      li.appendChild(el("span","val", c.dose || ""));
+      ulM.appendChild(li);
+    });
+    bMed.appendChild(ulM);
+    var mn = el("p","p-prose");
+    mn.style.cssText = "margin-top:8px;font-size:12.5px;color:var(--ink-3)";
+    mn.textContent = "Given at home. You are not being asked to give any medication.";
+    bMed.appendChild(mn);
+    paper.appendChild(bMed);
+  }
+
+  if(s.pleaseDont){
+    var b4 = el("div","p-block warn");
+    b4.appendChild(el("h3", null, "Please don't"));
+    b4.appendChild(el("p","p-prose", s.pleaseDont));
+    paper.appendChild(b4);
+  }
+  if(s.communication){
+    var b5 = el("div","p-block");
+    b5.appendChild(el("h3", null, "How they communicate"));
+    b5.appendChild(el("p","p-prose", s.communication));
+    paper.appendChild(b5);
+  }
+  if(s.worthKnowing){
+    var b6 = el("div","p-block");
+    b6.appendChild(el("h3", null, "Worth knowing"));
+    b6.appendChild(el("p","p-prose", s.worthKnowing));
+    paper.appendChild(b6);
+  }
+
+  var foot = el("div","p-foot");
+  foot.appendChild(el("div", null, "kaseyapp.com"));
+  foot.appendChild(el("div", null, "These are counts from a parent's log, not a clinical assessment."));
+  paper.appendChild(foot);
+  view.appendChild(paper);
+
+  var ask = el("button","btn-quiet noprint","Ask a teacher or sitter for a note");
+  ask.type = "button"; ask.style.marginTop = "16px";
+  ask.addEventListener("click", askForNote);
+  view.appendChild(ask);
+}
+
+function renderDoctor(a){
+  var s = DATA.settings;
+  var warn = lowNBanner(a.episodes); if(warn) view.appendChild(warn);
+
+  var prior  = analyse(entriesBetween(Date.now() - 60*86400000, Date.now() - 30*86400000));
+  var recent = analyse(entriesBetween(Date.now() - 30*86400000, Date.now() + 1));
+
+  var paper = el("div","paper");
+  var mast = el("div","p-masthead");
+  mast.appendChild(mark("kcPlain"));
+  mast.appendChild(el("span","nm","Kasey"));
+  mast.appendChild(el("span","rule"));
+  paper.appendChild(mast);
+  var head = el("div","p-head");
+  head.appendChild(el("h2", null, childName() + (s.childAge ? ", age " + s.childAge : "")));
+  head.appendChild(el("div","who","Caregiver-reported episode summary"));
+  var gen = el("div","gen");
+  gen.appendChild(el("div", null, "Prepared " + fmtStamp(new Date().toISOString())));
+  gen.appendChild(el("div", null, "Observation period: " + a.spanDays + " days · " +
+    a.allDays + " logged · " + a.episodes + " episodes"));
+  if(s.contact) gen.appendChild(el("div", null, "Reported by " + s.contact));
+  head.appendChild(gen);
+  paper.appendChild(head);
+
+  function trow(tbl, label, val){
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td"); td1.textContent = label;
+    var td2 = document.createElement("td"); td2.textContent = val;
+    tr.appendChild(td1); tr.appendChild(td2); tbl.appendChild(tr);
+  }
+
+  var b0 = el("div","p-block");
+  b0.appendChild(el("h3", null, "At a glance"));
+  var t0 = el("table","p-tbl");
+  trow(t0, "Days logged", String(a.allDays));
+  trow(t0, "Days with at least one episode", a.hardDays + " of " + a.allDays);
+  trow(t0, "Days marked good by caregiver", String(a.goodDays));
+  trow(t0, "Episodes recorded", String(a.episodes) +
+    (a.episodes > a.hardDays ? " (some days had more than one)" : ""));
+  trow(t0, "Episode frequency", (a.perWeek ? a.perWeek.toFixed(1) : "0") + " per week");
+  trow(t0, "Median time to baseline", fmtMins(a.typical));
+  trow(t0, "De-escalated at stage 1", a.caughtEarly + " of " + a.episodes);
+  trow(t0, "Longest episode", a.longest[0] ? fmtMins(a.longest[0].minutes) : "—");
+  trow(t0, "Nothing tried helped", a.nothing + " of " + a.n);
+  if(prior.n && recent.n){
+    var dm = pctChange(prior.typical, recent.typical);
+    var df = pctChange(prior.n, recent.n);
+    trow(t0, "Last 30 vs prior 30",
+      (df === null ? "—" : (df > 0 ? "+" : "") + df + "% frequency") + " · " +
+      (dm === null ? "—" : (dm > 0 ? "+" : "") + dm + "% duration"));
+  }
+  b0.appendChild(t0);
+  paper.appendChild(b0);
+
+  var bS = el("div","p-block");
+  bS.appendChild(el("h3", null, "Escalation reached"));
+  var tS = el("table","p-tbl");
+  STAGES.forEach(function(st){
+    var c = a.stages[st.n] || 0;
+    trow(tS, st.n + " · " + st.name, c + (a.n ? " (" + Math.round(c/a.n*100) + "%)" : ""));
+  });
+  bS.appendChild(tS);
+  paper.appendChild(bS);
+
+  if(a.topTriggers.length){
+    var b1 = el("div","p-block");
+    b1.appendChild(el("h3", null, "Recorded antecedents"));
+    var t1 = el("table","p-tbl");
+    a.topTriggers.forEach(function(t){ trow(t1, t.name, t.n + " (" + Math.round(t.n/a.n*100) + "%)"); });
+    b1.appendChild(t1);
+    paper.appendChild(b1);
+  }
+
+  if(a.topBeh.length){
+    var b2 = el("div","p-block");
+    b2.appendChild(el("h3", null, "Observed behaviors"));
+    var t2 = el("table","p-tbl");
+    a.topBeh.forEach(function(t){ trow(t2, t.name, String(t.n)); });
+    b2.appendChild(t2);
+    paper.appendChild(b2);
+  }
+
+  var b3 = el("div","p-block");
+  b3.appendChild(el("h3", null, "Interventions tried"));
+  var t3 = el("table","p-tbl");
+  if(!a.helps.length) trow(t3, "None recorded", "—");
+  a.helps.forEach(function(t){ trow(t3, t.name, "n=" + t.n + " · median " + fmtMins(t.med)); });
+  b3.appendChild(t3);
+  paper.appendChild(b3);
+
+  if(a.sources.length > 1){
+    var b4 = el("div","p-block");
+    b4.appendChild(el("h3", null, "By setting"));
+    var t4 = el("table","p-tbl");
+    a.sources.forEach(function(t){ trow(t4, t.name, String(t.n)); });
+    b4.appendChild(t4);
+    paper.appendChild(b4);
+  }
+
+  var meds = currentMeds(), past = pastMeds();
+  if(meds.length){
+    var bM = el("div","p-block");
+    bM.appendChild(el("h3", null, "Current medication"));
+    var tM = el("table","p-tbl");
+    meds.forEach(function(c){
+      trow(tM, c.label + (c.dose ? " — " + c.dose : ""),
+        "since " + fmtDate(c.start) + " (" + daysSince(c.start) + "d)");
+    });
+    bM.appendChild(tM);
+    paper.appendChild(bM);
+  }
+  if(past.length){
+    var bP = el("div","p-block");
+    bP.appendChild(el("h3", null, "Medication history"));
+    var tP = el("table","p-tbl");
+    past.forEach(function(c){
+      trow(tP, c.label + (c.dose ? " — " + c.dose : ""),
+        fmtDate(c.start) + " to " + fmtDate(c.end));
+    });
+    bP.appendChild(tP);
+    paper.appendChild(bP);
+  }
+  var others = DATA.changes.filter(function(c){ return c.kind !== "med"; });
+  if(others.length){
+    var bO = el("div","p-block");
+    bO.appendChild(el("h3", null, "Other changes"));
+    var tO = el("table","p-tbl");
+    others.slice().sort(function(a,b){ return new Date(a.start) - new Date(b.start); })
+      .forEach(function(c){ trow(tO, c.label, kindLabel(c.kind) + " · " + fmtDate(c.start)); });
+    bO.appendChild(tO);
+    paper.appendChild(bO);
+  }
+
+  if(a.flagged.length){
+    var b6 = el("div","p-block warn");
+    b6.appendChild(el("h3", null, "Flagged to raise"));
+    var t6 = el("table","p-tbl");
+    a.flagged.forEach(function(e){
+      var d = new Date(e.at);
+      trow(t6, MONS[d.getMonth()] + " " + d.getDate() + " — " + (e.trigger || "—"),
+        (e.note || fmtMins(e.minutes)).slice(0,60));
+    });
+    b6.appendChild(t6);
+    paper.appendChild(b6);
+  }
+
+  if(a.longest.length){
+    var b7 = el("div","p-block");
+    b7.appendChild(el("h3", null, "Longest episodes"));
+    var t7 = el("table","p-tbl");
+    a.longest.forEach(function(e){
+      var d = new Date(e.at);
+      trow(t7, MONS[d.getMonth()] + " " + d.getDate() + " — " + (e.trigger || "—"), fmtMins(e.minutes));
+    });
+    b7.appendChild(t7);
+    paper.appendChild(b7);
+  }
+
+  if(s.alwaysTrue || s.worthKnowing){
+    var b8 = el("div","p-block");
+    b8.appendChild(el("h3", null, "Caregiver notes"));
+    b8.appendChild(el("p","p-prose", [s.alwaysTrue, s.worthKnowing].filter(Boolean).join("\n\n")));
+    paper.appendChild(b8);
+  }
+
+  var foot = el("div","p-foot");
+  foot.appendChild(el("div", null, "kaseyapp.com"));
+  foot.appendChild(el("div", null, "Caregiver-reported data collected retrospectively after each episode. Counts and durations are as recorded by the parent and have not been clinically verified. Recorded antecedents are what the caregiver observed beforehand, not established causes. Days are counted as distinct calendar days: a day with several episodes counts once, and days logged without an episode are included in the denominator." +
+    (a.bothDays ? " " + a.bothDays + (a.bothDays === 1 ? " day was" : " days were") + " marked good by the caregiver despite containing an episode." : "")));
+  paper.appendChild(foot);
+  view.appendChild(paper);
+}
+
+function renderChanges(){
+  var meds = currentMeds(), past = pastMeds();
+
+  /* --- what he's on right now --- */
+  view.appendChild(el("div","daylabel","On right now"));
+  if(!meds.length){
+    var none = el("p","mk-thin");
+    none.style.margin = "0 2px 16px";
+    none.textContent = "No medication recorded. If there is one, log it as a change — it shows up on the doctor's page and on the page you hand a sitter.";
+    view.appendChild(none);
+  } else {
+    meds.forEach(function(c){
+      var card = el("div","med");
+      var top = el("div","med-top");
+      var nm = el("div");
+      nm.appendChild(el("span","med-name", c.label));
+      if(c.dose) nm.appendChild(el("span","med-dose", c.dose));
+      top.appendChild(nm);
+      top.appendChild(el("span","med-since", daysSince(c.start) + "d"));
+      card.appendChild(top);
+      card.appendChild(el("div","med-meta","Since " + fmtDate(c.start)));
+      if(c.note) card.appendChild(el("div","med-meta", c.note));
+      var row = el("div","med-acts");
+      var chg = el("button", null, "Change dose"); chg.type = "button";
+      chg.addEventListener("click", function(){ addChange({from:c}); });
+      var stop = el("button", null, "Mark stopped"); stop.type = "button";
+      stop.addEventListener("click", function(){
+        askConfirm("Mark " + c.label + " as stopped today? It stays in the history.", "Mark stopped", function(){
+          c.end = new Date().toISOString();
+          save(); render(); toast("Marked stopped");
+        });
+      });
+      row.appendChild(chg); row.appendChild(stop);
+      card.appendChild(row);
+      view.appendChild(card);
+    });
+  }
+
+  if(past.length){
+    var pastHead = el("div","daylabel","No longer taking");
+    pastHead.style.marginTop = "22px";
+    view.appendChild(pastHead);
+    past.forEach(function(c){
+      var row = el("div","med past");
+      row.appendChild(el("div","med-name", medLine(c)));
+      row.appendChild(el("div","med-meta", fmtDate(c.start) + " to " + fmtDate(c.end)));
+      view.appendChild(row);
+    });
+  }
+
+  /* --- did it make a difference --- */
+  var chHead = el("div","daylabel","Did it make a difference");
+  chHead.style.marginTop = "26px";
+  view.appendChild(chHead);
+
+  var all = sortedChanges();
+  if(!all.length){
+    var emp = el("div","empty");
+    emp.appendChild(el("h2", null, "Nothing logged yet"));
+    emp.appendChild(el("p", null, "Use the button below to log the day a medication started, a therapy began, or a school year changed. Kasey compares the 30 days either side using entries you already have."));
+    view.appendChild(emp);
+    return;
+  }
+
+  all.forEach(function(c){
+    var cmp = compareChange(c, 30);
+    var card = el("div","mk");
+    var top = el("div","mk-top");
+    top.appendChild(el("h4", null, c.kind === "med" ? medLine(c) : c.label));
+    top.appendChild(el("span","date", fmtDate(c.start)));
+    card.appendChild(top);
+
+    var tag = el("div","mk-thin");
+    tag.style.marginTop = "3px";
+    tag.textContent = kindLabel(c.kind) + (c.end ? " · stopped " + fmtDate(c.end) : "");
+    card.appendChild(tag);
+
+    if(cmp.before.episodes < 3 || cmp.after.episodes < 3){
+      card.appendChild(el("p","mk-thin",
+        "Not enough logged either side yet — " + cmp.before.episodes + " episodes in the 30 days before, " +
+        cmp.after.episodes + " in the " + cmp.afterDays + " days after. Three each side is the minimum before a comparison means anything."));
+    } else {
+      function cmpRow(label, bVal, aVal, bTxt, aTxt, lowerBetter){
+        var row = el("div","cmp-row");
+        row.appendChild(el("div","cmp-lab", label));
+        var grid = el("div","cmp");
+        var c1 = el("div","cmp-col");
+        c1.appendChild(el("span","lab","30d before"));
+        c1.appendChild(el("div","v", bTxt));
+        grid.appendChild(c1);
+        var pc = pctChange(bVal, aVal);
+        var arrow = el("div","cmp-arrow","→");
+        if(pc !== null && pc !== 0){
+          var better = lowerBetter ? pc < 0 : pc > 0;
+          arrow.textContent = pc < 0 ? "↓" : "↑";
+          arrow.style.color = better ? "var(--deep)" : "var(--warn)";
+          arrow.style.fontWeight = "700";
+        }
+        grid.appendChild(arrow);
+        var c2 = el("div","cmp-col");
+        c2.appendChild(el("span","lab", cmp.afterDays + "d after"));
+        var v2 = el("div","v", aTxt);
+        if(pc !== null && pc !== 0) v2.appendChild(el("small", null, (pc > 0 ? "+" : "") + pc + "%"));
+        c2.appendChild(v2);
+        grid.appendChild(c2);
+        row.appendChild(grid);
+        return row;
+      }
+      card.appendChild(cmpRow("How often", cmp.before.perWeek, cmp.after.perWeek,
+        cmp.before.perWeek.toFixed(1) + "/wk", cmp.after.perWeek.toFixed(1) + "/wk", true));
+      card.appendChild(cmpRow("How long", cmp.before.typical, cmp.after.typical,
+        fmtMins(cmp.before.typical), fmtMins(cmp.after.typical), true));
+      var bE = cmp.before.episodes ? Math.round(cmp.before.caughtEarly / cmp.before.episodes * 100) : 0;
+      var aE = cmp.after.episodes ? Math.round(cmp.after.caughtEarly / cmp.after.episodes * 100) : 0;
+      card.appendChild(cmpRow("Caught early", bE, aE, bE + "%", aE + "%", false));
+      card.appendChild(el("p","mk-thin",
+        "This compares what you logged, not what caused it. Other things changed in the same 60 days, and how consistently you logged may have changed too."));
+    }
+
+    var del = el("button","mk-del","Remove this"); del.type = "button";
+    del.addEventListener("click", function(){
+      askConfirm("Remove \"" + c.label + "\"? Your entries are not affected.", "Remove", function(){
+        DATA.changes = DATA.changes.filter(function(x){ return x.id !== c.id; });
+        save(); render(); toast("Removed");
+      });
+    });
+    card.appendChild(del);
+    view.appendChild(card);
+  });
+}
+
+var changeDraft = null;
+var replacingMed = null;
+function saveChange(){
+  var d = changeDraft;
+  if(!d || !d.label.trim()){ toast(d && d.kind === "med" ? "Which medication?" : "Give it a short name"); return; }
+  if(replacingMed){ replacingMed.end = d.start; }   // a dose change ends the old record
+  DATA.changes.push(d);
+  changeDraft = null; replacingMed = null;
+  save(); closeSheet(); pageMode = "changes"; render();
+  toast(d.kind === "med" ? "Medication logged" : "Change logged");
+}
+function addChange(opts){
+  opts = opts || {};
+  var now = new Date();
+  var from = opts.from || null;
+  replacingMed = from;
+  var draft = { id:uid(), kind: from ? "med" : "", label: from ? from.label : "",
+                dose:"", start:now.toISOString(), end:null, note:"" };
+  changeDraft = draft;
+  sheetMode = "change";
+  editing = null;
+  sheetTitle.textContent = from ? "Change the dose" : "Log a change";
+  sheetSave.textContent = "Save";
+  autosaveNote.hidden = true;
+  clear(sheetBody);
+  var rest = el("div");
+
+  // 1. what kind of change is this? Everything else follows from the answer.
+  if(!from){
+    var fK = el("div","field");
+    fK.appendChild(el("label", null, "What kind of change?"));
+    var kChips = el("div","chips");
+    CHANGE_KINDS.forEach(function(o){
+      var b = el("button","chip", o.label); b.type = "button";
+      b.setAttribute("aria-pressed","false");
+      b.addEventListener("click", function(){
+        draft.kind = o.k;
+        Array.prototype.forEach.call(kChips.children, function(x){ x.setAttribute("aria-pressed","false"); });
+        b.setAttribute("aria-pressed","true");
+        paintRest();
+      });
+      kChips.appendChild(b);
+    });
+    fK.appendChild(kChips);
+    sheetBody.appendChild(fK);
+  }
+  sheetBody.appendChild(rest);
+
+  function paintRest(){
+    clear(rest);
+    if(!draft.kind) return;
+    var isMed = draft.kind === "med";
+
+    var f1 = el("div","field");
+    var l1 = el("label");
+    l1.textContent = isMed ? "Which medication " : "What changed ";
+    l1.appendChild(el("span","hint", isMed ? "— brand or generic, whichever you say out loud" : "— short and specific"));
+    f1.appendChild(l1);
+    var t = el("input"); t.type = "text";
+    t.placeholder = isMed ? "Ritalin IR" : "Started ABA twice a week";
+    t.value = draft.label || "";
+    if(from) t.readOnly = true;
+    t.addEventListener("input", function(){ draft.label = t.value; });
+    t.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); saveChange(); } });
+    f1.appendChild(t);
+    rest.appendChild(f1);
+
+    if(isMed){
+      var f2 = el("div","field");
+      var l2 = el("label"); l2.textContent = "Dose and schedule ";
+      l2.appendChild(el("span","hint","— exactly how you'd say it to the doctor"));
+      f2.appendChild(l2);
+      var dz = el("input"); dz.type = "text"; dz.placeholder = "10mg twice daily";
+      dz.value = draft.dose || "";
+      dz.addEventListener("input", function(){ draft.dose = dz.value; });
+      f2.appendChild(dz);
+      rest.appendChild(f2);
+    }
+
+    var f3 = el("div","field");
+    f3.appendChild(el("label", null, isMed ? "First dose on" : "The day it started"));
+    var dIn = el("input"); dIn.type = "date"; dIn.value = toDateInput(new Date(draft.start));
+    dIn.addEventListener("change", function(){
+      var nd = fromInputs(dIn.value, "12:00");
+      if(nd) draft.start = nd.toISOString();
+    });
+    f3.appendChild(dIn);
+    rest.appendChild(f3);
+
+    var f4 = el("div","field");
+    var l4 = el("label"); l4.textContent = "Why ";
+    l4.appendChild(el("span","hint","— optional, but you'll want it in six months"));
+    f4.appendChild(l4);
+    var nt = el("input"); nt.type = "text";
+    nt.value = draft.note || "";
+    nt.placeholder = isMed ? "Raised for focus at school" : "";
+    nt.addEventListener("input", function(){ draft.note = nt.value; });
+    f4.appendChild(nt);
+    rest.appendChild(f4);
+
+    var note = el("div","banner info");
+    note.textContent = from
+      ? "The old dose is closed off on this date and kept in the history, so the doctor can see the whole sequence."
+      : (isMed
+        ? "Medications can overlap. Logging a new one does not stop the others — mark those stopped yourself when they end."
+        : "Kasey compares the 30 days before this against the 30 days after.");
+    rest.appendChild(note);
+
+    setTimeout(function(){ if(!from) t.focus(); }, 40);
+  }
+  paintRest();
+  openSheet();
+}
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+function renderSettings(){
+  var s = DATA.settings;
+  topTitle.textContent = "Setup";
+  topSub.textContent = persistent ? "Saved on this device" : "Not saved — export to keep";
+
+  function textField(label, hint, key, multiline, placeholder){
+    var f = el("div","field");
+    var l = el("label"); l.textContent = label + " ";
+    if(hint) l.appendChild(el("span","hint","— " + hint));
+    f.appendChild(l);
+    var input = multiline ? el("textarea") : el("input");
+    if(!multiline) input.type = "text";
+    input.value = s[key] || "";
+    if(placeholder) input.placeholder = placeholder;
+    input.addEventListener("input", function(){ s[key] = input.value; });
+    input.addEventListener("blur", function(){ save(); });
+    f.appendChild(input);
+    return f;
+  }
+
+  var lock = el("div","lockup");
+  lock.appendChild(mark("kcTile"));
+  lock.appendChild(el("div","wordmark","Kasey"));
+  lock.appendChild(el("div","tag","Because you can't hold it all."));
+  lock.appendChild(el("div","ver","Working prototype"));
+  view.appendChild(lock);
+
+  var g0 = el("div");
+  g0.appendChild(el("div","daylabel","Who this is for"));
+  g0.appendChild(textField("Name","first name is fine","childName", false, "Avi"));
+  g0.appendChild(textField("Age","","childAge", false, "7"));
+  g0.appendChild(textField("Contact line","shows on the printed page","contact", false, "Mom · (407) 555-0148"));
+  view.appendChild(g0);
+
+  var gH = el("div");
+  gH.appendChild(el("div","daylabel","How logging works"));
+  var hb = el("div","banner info");
+  hb.textContent = "An episode is one moment. A good day is your verdict on the whole day. They're separate on purpose, so you can log both — the doctor page still counts the episode, and your \"good overall\" sits beside it rather than hiding it.";
+  gH.appendChild(hb);
+  view.appendChild(gH);
+
+  var g1 = el("div");
+  g1.appendChild(el("div","daylabel","Start here — who he is"));
+  var why = el("div","banner good");
+  why.textContent = "This is the first thing a sitter reads. A page that opens with what he loves gets treated differently than one that opens with what sets him off.";
+  g1.appendChild(why);
+  g1.appendChild(textField("What he loves","", "loves", false, "Trains, anything with a map, his dog"));
+  g1.appendChild(textField("What he's proud of","", "proudOf", false, "Reading chapter books on his own"));
+  g1.appendChild(textField("What makes him laugh","", "laughs", false, "Silly voices, knock-knock jokes"));
+  view.appendChild(g1);
+
+  var g2 = el("div");
+  g2.appendChild(el("div","daylabel","Things that are always true"));
+  g2.appendChild(textField("Always true","not tied to any one day","alwaysTrue", true, "Flaps his hands when excited. Needs to know what's coming next. Talks about himself harshly on calm days too."));
+  g2.appendChild(textField("How they communicate","", "communication", true, "Talks in short sentences when calm, goes quiet when overwhelmed…"));
+  g2.appendChild(textField("Please don't","", "pleaseDont", true, "Raise your voice. Hold or restrain him. Keep asking what's wrong…"));
+  g2.appendChild(textField("Worth knowing","", "worthKnowing", true, "Needs about 20 minutes to come all the way back. No allergies…"));
+  view.appendChild(g2);
+
+  var gT = el("div");
+  gT.appendChild(el("div","daylabel","Appearance"));
+  var segT = el("div","seg");
+  segT.style.gridTemplateColumns = "1fr 1fr 1fr";
+  [["auto","Match phone"],["light","Light"],["dark","Dark"]].forEach(function(p){
+    var b = el("button", null, p[1]); b.type = "button";
+    b.setAttribute("aria-pressed", (s.theme || "auto") === p[0] ? "true" : "false");
+    b.addEventListener("click", function(){
+      s.theme = p[0]; save(); applyTheme(); render();
+    });
+    segT.appendChild(b);
+  });
+  gT.appendChild(segT);
+  var tNote = el("p");
+  tNote.style.cssText = "font-size:12.5px;color:var(--ink-3);line-height:1.55;margin:0 0 6px";
+  tNote.textContent = "The pages you print or hand someone stay on white paper either way.";
+  gT.appendChild(tNote);
+  var ramp = el("div","ramp");
+  var sw = el("div","swatches");
+  ["--s1","--s2","--s3","--s4","--s5"].forEach(function(v){
+    var i = el("i"); i.style.background = "var(" + v + ")"; sw.appendChild(i);
+  });
+  ramp.appendChild(el("span","cap","SHORT"));
+  ramp.appendChild(sw);
+  ramp.appendChild(el("span","cap","LONG RECOVERY"));
+  gT.appendChild(ramp);
+  view.appendChild(gT);
+
+  var g3 = el("div");
+  g3.appendChild(el("div","daylabel","Your data"));
+  var bInfo = el("div","banner info");
+  bInfo.textContent = persistent
+    ? "Entries stay on this device. Nothing is sent anywhere, and nobody else can see them unless you export and share the file."
+    : "This preview can't save between sessions. Export a copy before you close it.";
+  g3.appendChild(bInfo);
+
+  var bCsv = el("button","btn-quiet","Export as CSV (opens in Excel)"); bCsv.type = "button";
+  bCsv.addEventListener("click", exportCSV);
+  g3.appendChild(bCsv);
+  var bJson = el("button","btn-quiet","Export a full backup (JSON)"); bJson.type = "button";
+  bJson.addEventListener("click", exportJSON);
+  g3.appendChild(bJson);
+  if(!DATA.entries.length){
+    var bSeed = el("button","btn-quiet","Load a few example entries"); bSeed.type = "button";
+    bSeed.addEventListener("click", seedExamples);
+    g3.appendChild(bSeed);
+  }
+  var bAgain = el("button","btn-quiet","Run the setup questions again"); bAgain.type = "button";
+  bAgain.addEventListener("click", startOnboarding);
+  g3.appendChild(bAgain);
+
+  var bWipe = el("button","btn-ghost","Erase everything"); bWipe.type = "button";
+  bWipe.addEventListener("click", function(){
+    askConfirm("Erase all entries and settings? This can't be undone.", "Erase everything", function(){
+      DATA = defaults(); save(); applyTheme(); current = "log"; pageMode = "handoff"; render();
+      toast("Everything erased");
+    });
+  });
+  g3.appendChild(bWipe);
+  var note = el("div","meta");
+  note.textContent = "Kasey — working prototype. Not a medical device, and not a substitute for your child's care team.";
+  g3.appendChild(note);
+  view.appendChild(g3);
+}
+
+/* ============================================================
+   EXPORT
+   ============================================================ */
+function download(filename, text, mime){
+  try{
+    var blob = new Blob([text], {type: mime || "text/plain;charset=utf-8"});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 600);
+    toast("Exported " + filename);
+  }catch(e){ toast("Export blocked here — try a browser tab"); }
+}
+function csvCell(v){
+  v = (v === undefined || v === null) ? "" : String(v);
+  return '"' + v.replace(/"/g,'""') + '"';
+}
+function exportCSV(){
+  if(!DATA.entries.length){ toast("Nothing to export yet"); return; }
+  var rows = [["Date","Time","Kind","Stage","Where","What set it off","What it looked like","Back to baseline (min)","What helped","Flagged","Note"]];
+  sortedEntries().slice().reverse().forEach(function(e){
+    var d = new Date(e.at);
+    var st = e.kind === "good" ? "" : ((e.stage||"") + (STAGES[(e.stage||1)-1] ? " " + STAGES[(e.stage||1)-1].name : ""));
+    rows.push([
+      toDateInput(d), toTimeInput(d), e.kind === "good" ? "Good day" : "Episode", st,
+      e.source || "Home", e.trigger || "", (e.behaviors||[]).join("; "),
+      e.kind === "good" ? "" : e.minutes, (e.tools||[]).join("; "),
+      e.flagged ? "Yes" : "", e.note || ""
+    ]);
+  });
+  var csv = rows.map(function(r){ return r.map(csvCell).join(","); }).join("\r\n");
+  download("kasey-log.csv", "\ufeff" + csv, "text/csv;charset=utf-8");
+}
+function exportJSON(){ download("kasey-backup.json", JSON.stringify(DATA, null, 2), "application/json"); }
+
+function askForNote(){
+  var name = DATA.settings.childName || "my child";
+  var msg = "Hi — I'm keeping a short log of " + name + "'s hard moments so I can spot patterns and share them with " +
+    "our doctor. If something happens while " + name + " is with you, could you text me four quick things? " +
+    "1) roughly when, 2) what happened right before, 3) how far it got, 4) how long until they were back to themselves, " +
+    "and anything that helped. A sentence is plenty. Good days are worth a text too. Thank you.";
+  function showIt(){
+    sheetMode = "note"; editing = null;
+    sheetTitle.textContent = "Message to send";
+    sheetSave.textContent = "Done";
+    clear(sheetBody);
+    var f = el("div","field");
+    f.appendChild(el("label", null, "Copy this and text it to them"));
+    var ta = el("textarea"); ta.value = msg; ta.style.minHeight = "190px"; ta.readOnly = true;
+    f.appendChild(ta);
+    sheetBody.appendChild(f);
+    openSheet();
+    setTimeout(function(){ ta.select(); }, 60);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(msg).then(
+      function(){ toast("Message copied — paste it into a text"); }, showIt);
+  } else showIt();
+}
+
+/* ============================================================
+   EXAMPLES
+   ============================================================ */
+function seedExamples(){
+  var now = Date.now(), day = 86400000;
+  function hard(daysAgo, hour, min, stage, trigger, beh, mins, tools, note, source, flagged){
+    var d = new Date(now - daysAgo*day);
+    d.setHours(hour, min, 0, 0);
+    if(d.getTime() > now) d = new Date(d.getTime() - day);
+    return { id:uid(), at:d.toISOString(), kind:"hard", stage:stage, trigger:trigger,
+             behaviors:beh, minutes:mins, tools:tools, note:note || "", source:source || "Home",
+             flagged:!!flagged, createdAt:d.toISOString(), updatedAt:null };
+  }
+  function good(daysAgo, note){
+    var d = new Date(now - daysAgo*day);
+    d.setHours(19, 30, 0, 0);
+    if(d.getTime() > now) d = new Date(d.getTime() - day);
+    return { id:uid(), at:d.toISOString(), kind:"good", note:note || "", source:"Home",
+             createdAt:d.toISOString(), updatedAt:null };
+  }
+  DATA.entries = DATA.entries.concat([
+    hard(0, 15, 40, 2, "Loud noise", ["Covering ears"], 25, ["Headphones","Dark room"], "Fire drill — warn him next time", "School"),
+    good(1, "Asked for his headphones before the assembly, all on his own"),
+    hard(2, 18, 15, 1, "Clothing", [], 10, ["Headphones"], "Tag in the new shirt — caught it fast"),
+    good(2, "Rough start, but the rest of the day was genuinely fine"),
+    good(3, ""),
+    hard(4, 11, 0, 4, "Unknown", ["Withdrew"], 45, ["Nothing we tried helped"], "Slept badly the night before", "Home", true),
+    good(5, "Whole day at grandma's, no trouble"),
+    hard(6, 14, 20, 3, "Crowded", ["Bolted"], 20, ["Ride in car"], "Grocery store lights", "Out"),
+    good(7, ""),
+    good(8, "Lost a board game and shrugged it off"),
+    hard(9, 19, 5, 2, "Transition", ["Crying"], 15, ["Weighted blanket"], "Tablet off for dinner"),
+    good(10, ""),
+    hard(12, 8, 30, 1, "Told no", [], 20, ["Deep pressure"], "Walked away by himself"),
+    good(13, ""),
+    hard(15, 16, 45, 2, "Loud noise", ["Covering ears"], 25, ["Headphones"], "Leaf blower next door"),
+    good(17, ""),
+    hard(19, 12, 10, 1, "Hungry", [], 8, ["Snack"], ""),
+    good(21, "Best day in weeks"),
+    hard(23, 13, 30, 2, "Transition", ["Crying"], 18, ["Weighted blanket"], "", "School"),
+    good(25, ""),
+    hard(27, 17, 0, 3, "Loud noise", ["Screaming"], 22, ["Headphones"], ""),
+    // earlier period
+    hard(34, 15, 10, 4, "Transition", ["Screaming","Hitting"], 55, ["Weighted blanket"], "", "School"),
+    hard(37, 9, 45, 4, "Loud noise", ["Screaming","Covering ears"], 60, ["Nothing we tried helped"], "Assembly", "School", true),
+    good(38, ""),
+    hard(41, 18, 30, 3, "Told no", ["Crying","Hitting"], 40, ["Deep pressure"], ""),
+    hard(44, 12, 0, 4, "Crowded", ["Bolted","Screaming"], 75, ["Ride in car"], "Mall at the weekend", "Out"),
+    hard(47, 16, 20, 4, "Unknown", ["Withdrew"], 90, ["Nothing we tried helped"], ""),
+    good(49, ""),
+    hard(50, 8, 15, 3, "Transition", ["Crying"], 35, ["Weighted blanket"], "Morning drop-off", "School"),
+    hard(54, 19, 40, 4, "Clothing", ["Crying","Hitting"], 45, ["Nothing we tried helped"], ""),
+    hard(58, 14, 0, 3, "Loud noise", ["Covering ears","Screaming"], 50, ["Headphones"], "")
+  ]);
+  if(!DATA.changes.length){
+    function at(d){ var x = new Date(now - d*day); x.setHours(12,0,0,0); return x.toISOString(); }
+    DATA.changes.push({ id:uid(), kind:"med", label:"Ritalin IR", dose:"5mg twice daily",
+      start:at(75), end:at(52), note:"Starting dose" });
+    DATA.changes.push({ id:uid(), kind:"med", label:"Ritalin IR", dose:"10mg twice daily",
+      start:at(52), end:null, note:"Dose raised for focus at school" });
+    DATA.changes.push({ id:uid(), kind:"med", label:"Melatonin", dose:"3mg at bedtime",
+      start:at(40), end:null, note:"For settling at night" });
+    DATA.changes.push({ id:uid(), kind:"other", label:"Noise-cancelling headphones at school",
+      dose:"", start:at(30), end:null, note:"" });
+  }
+  if(!DATA.settings.childName){
+    DATA.settings.childName = "Avi";
+    DATA.settings.childAge = "7";
+    DATA.settings.loves = "Trains, anything with a map, his dog Rocket";
+    DATA.settings.proudOf = "Reading chapter books on his own";
+    DATA.settings.laughs = "Silly voices and terrible knock-knock jokes";
+    DATA.settings.alwaysTrue = "Flaps his hands when he's excited — that one is happy, not a warning. Needs to know what's coming next. Talks about himself harshly on calm days too.";
+    DATA.settings.communication = "Talks in short sentences when calm, goes quiet when overwhelmed. Covering his ears means it's already too loud.";
+    DATA.settings.pleaseDont = "Raise your voice or count down at him. Hold or restrain him. Keep asking what's wrong mid-meltdown.";
+    DATA.settings.worthKnowing = "He usually needs about 20 minutes to come all the way back, and he isn't being defiant during that time — he can't hear you yet. No allergies, no daily medication.";
+  }
+  DATA.settings.onboarded = true;
+  save(); render(); toast("Example entries loaded");
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){
+  t.addEventListener("click", function(){ current = t.dataset.tab; window.scrollTo(0,0); render(); });
+});
+function buildDock(){
+  clear(dock);
+  dock.classList.remove("one");
+  var show = true;
+  setTimeout(function(){ document.body.classList.toggle("has-dock", !dock.hidden); }, 0);
+
+  if(current === "log"){
+    var st = todayState();
+    var g = el("button","b-good"); g.type = "button";
+    g.textContent = st.good ? "Day marked good" : (st.hard ? "Still a good day" : "Good day");
+    g.setAttribute("aria-pressed", st.good ? "true" : "false");
+    g.addEventListener("click", function(){
+      var s2 = todayState();
+      if(s2.good){ editGoodDay(s2.good); return; }
+      logGoodDay();
+    });
+    var b = el("button","b-hard","Something happened"); b.type = "button";
+    b.addEventListener("click", function(){ editEntry(null, DATA.draft || null); });
+    dock.appendChild(g); dock.appendChild(b);
+    dock.hidden = false;
+    return;
+  }
+
+  if(current === "page" && pageMode === "changes"){
+    dock.classList.add("one");
+    var c = el("button","b-plain","Log a change"); c.type = "button";
+    c.addEventListener("click", function(){ addChange(); });
+    dock.appendChild(c);
+    dock.hidden = false;
+    return;
+  }
+
+  if(current === "page" && analyse().allDays){
+    dock.classList.add("one");
+    var pr = el("button","b-plain","Print this page"); pr.type = "button";
+    pr.addEventListener("click", function(){ window.print(); });
+    dock.appendChild(pr);
+    dock.hidden = false;
+    return;
+  }
+
+  dock.hidden = true;   // Read and Setup have no single action
+}
+
+// A quiet signal that today has nothing in it, visible from every tab.
+function refreshPip(){
+  var k = toDateInput(new Date());
+  var logged = DATA.entries.some(function(e){ return toDateInput(new Date(e.at)) === k; });
+  var tab = document.querySelector('.tab[data-tab="log"]');
+  var pip = tab.querySelector(".pip");
+  if(logged || !DATA.entries.length){ if(pip) pip.remove(); return; }
+  if(!pip){
+    pip = el("span","pip");
+    pip.setAttribute("aria-label","nothing logged today");
+    tab.appendChild(pip);
+  }
+}
+
+function todayState(){
+  var k = toDateInput(new Date());
+  var st = {good:null, hard:0};
+  DATA.entries.forEach(function(e){
+    if(toDateInput(new Date(e.at)) !== k) return;
+    if(e.kind === "good") st.good = e; else st.hard++;
+  });
+  return st;
+}
+
+
+
+document.getElementById("onbNext").addEventListener("click", onbAdvance);
+document.getElementById("onbSkip").addEventListener("click", function(){ endOnboarding(false); });
+
+load().then(function(){
+  applyTheme();
+  render();
+  if(!DATA.settings.onboarded && !DATA.entries.length) startOnboarding();
+});
+
+})();
+</script>
+</body>
+</html>

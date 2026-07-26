@@ -1,0 +1,104 @@
+KASEY — HANDOFF PACKET
+======================
+
+Everything needed to start building Kasey with Claude Code.
+
+Jen: you do not need to understand the code to use this. Read HANDOFF.md
+first, it is written for you and takes about five minutes.
+
+
+ONE THING IS MISSING
+--------------------
+The file prototype\kasey-prototype.html has NOT been placed here yet
+(it is 150KB and had to be moved by hand to avoid corrupting it).
+
+Download "kasey-app" from the Claude chat, rename it to
+kasey-prototype.html, and drop it in the prototype folder.
+
+That file is the working app. Open it in any browser and use it.
+It matters more than any document in here.
+
+
+SETUP — CLAUDE CODE (for writing the actual app)
+------------------------------------------------
+1. Copy this whole Kasey folder to the computer you will build on.
+
+2. Rename gitignore.txt to .gitignore
+   (Windows hides the name if you do it in Explorer, so it is easier
+    to run this in the folder:  ren gitignore.txt .gitignore)
+
+3. Open a terminal in the folder and run:
+
+       git init
+       git add .
+       git commit -m "docs: product spec, roadmap, and reference prototype"
+
+4. Push it to GitHub, either through GitHub Desktop or:
+
+       gh repo create kasey --private --source=. --push
+
+5. Start Claude Code in that folder:
+
+       claude
+
+6. Paste this as the first message:
+
+       Read CLAUDE.md, docs/PRODUCT.md, docs/SPEC.md and docs/ROADMAP.md.
+       We are on M0: scaffold an Expo app with the blank-typescript
+       template. Nothing else, no navigation, no state library, no UI kit.
+       Stop when it runs.
+
+Claude Code reads CLAUDE.md automatically every session. You do not
+upload anything to it.
+
+
+SETUP — CLAUDE CHAT PROJECT (for thinking and planning)
+--------------------------------------------------------
+Separate from the above. Do this in the Claude app or website.
+
+1. Create a new Project, call it Kasey.
+
+2. Open docs\CLAUDE-PROJECT-INSTRUCTIONS.md, copy everything BELOW the
+   horizontal line, and paste it into the Project's custom instructions.
+   Do not upload that file. It is settings, not knowledge.
+
+3. Upload these five files to the Project's knowledge:
+       HANDOFF.md
+       docs\PRODUCT.md
+       docs\SPEC.md
+       docs\ROADMAP.md
+       prototype\kasey-prototype.html
+
+4. To check it worked, ask it:
+       "Read the project knowledge. What are we building, what is the one
+        thing that matters most right now, and what would you refuse to do?"
+
+   A good answer mentions sharing, the 60 second rule, and not claiming
+   that anything causes anything.
+
+
+ALSO NEEDS SHARING SEPARATELY
+------------------------------
+- The Notion page (Idea Vault > App Ideas > Kasey). All the research and
+  reasoning lives there and nothing in this folder duplicates it.
+- The GitHub repo, once it exists.
+
+Claude accounts do not share memory or projects. Nothing carries over
+automatically, which is why these documents exist.
+
+
+WHAT IS IN HERE
+---------------
+START-HERE.txt      this file
+HANDOFF.md          the catch-up. read this first.
+README.md           short overview of the repo
+CLAUDE.md           rules Claude Code reads every session
+gitignore.txt       rename to .gitignore
+docs\
+  PRODUCT.md        decisions that must not change, and why
+  SPEC.md           data model, screens, design tokens
+  ROADMAP.md        build order, one session per milestone
+  DECISIONS.md      running log, append to it
+  CLAUDE-PROJECT-INSTRUCTIONS.md   paste into a chat Project
+prototype\
+  kasey-prototype.html   <-- you need to add this
