@@ -11,6 +11,7 @@ import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Draft, Entry } from './src/domain/types';
+import { EntryDetail } from './src/screens/EntryDetail';
 import { EntrySheet, draftFromEntry, emptyDraft } from './src/screens/EntrySheet';
 import { LogScreen } from './src/screens/LogScreen';
 import { Onboarding } from './src/screens/Onboarding';
@@ -38,6 +39,7 @@ function Shell() {
   const [tab, setTab] = useState<Tab>('log');
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sheetDraft, setSheetDraft] = useState<Draft | null>(null);
+  const [detail, setDetail] = useState<Entry | null>(null);
   const [toast, setToast] = useState<{ msg: string; undo?: () => void } | null>(null);
   const [askRestOfDay, setAskRestOfDay] = useState(false);
 
@@ -110,15 +112,8 @@ function Shell() {
       </View>
 
       <Screen>
-        {tab === 'log' ? (
-          <LogScreen
-            onOpenEntry={(e: Entry) => {
-              if (e.kind === 'good') return;
-              setSheetDraft(draftFromEntry(e));
-              setSheetOpen(true);
-            }}
-          />
-        ) : null}
+        {/* Never tap straight into a form. A tap opens the read-only view. */}
+        {tab === 'log' ? <LogScreen onOpenEntry={(e: Entry) => setDetail(e)} /> : null}
         {tab === 'pages' ? <PagesScreen /> : null}
         {tab === 'setup' ? <SetupScreen /> : null}
       </Screen>
@@ -181,6 +176,18 @@ function Shell() {
           );
         })}
       </View>
+
+      <EntryDetail
+        entry={detail}
+        visible={!!detail}
+        onClose={() => setDetail(null)}
+        onEdit={(e) => {
+          setDetail(null);
+          if (e.kind === 'good') return;
+          setSheetDraft(draftFromEntry(e));
+          setSheetOpen(true);
+        }}
+      />
 
       <EntrySheet
         visible={sheetOpen}

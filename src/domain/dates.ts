@@ -51,6 +51,39 @@ export function nowISO(): string {
   return toLocalISO(new Date());
 }
 
+/** YYYY-MM-DD for a date input. Same shape as dateKey, kept separate by intent. */
+export function toDateInput(d: Date | string): string {
+  const date = typeof d === 'string' ? new Date(d) : d;
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+/** HH:MM, 24 hour, for a time input. */
+export function toTimeInput(d: Date | string): string {
+  const date = typeof d === 'string' ? new Date(d) : d;
+  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+/**
+ * Builds a LOCAL Date from the two inputs. Local on purpose: constructing from
+ * parts keeps the calendar date the parent picked, where parsing a string
+ * could be read as UTC and land the entry on the wrong day.
+ * Returns null when either input is incomplete, so a half typed date never
+ * silently becomes a real timestamp.
+ */
+export function fromDateAndTime(dateStr: string, timeStr: string): Date | null {
+  const dp = (dateStr || '').split('-');
+  const tp = (timeStr || '12:00').split(':');
+  if (dp.length !== 3 || tp.length < 2) return null;
+  const y = Number(dp[0]);
+  const mo = Number(dp[1]);
+  const da = Number(dp[2]);
+  const h = Number(tp[0]);
+  const mi = Number(tp[1]);
+  if ([y, mo, da, h, mi].some((n) => !Number.isFinite(n))) return null;
+  const d = new Date(y, mo - 1, da, h, mi, 0, 0);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
 /** Midnight at the start of the given day, in local time. */
 export function startOfDay(d: Date | string): Date {
   const date = typeof d === 'string' ? new Date(d) : d;

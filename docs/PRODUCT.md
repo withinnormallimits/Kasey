@@ -91,3 +91,4 @@ Write like a parent reporting observations, not a medical system generating a re
 | 2026-07 | Local-first, no accounts in v1 | Trust, HIPAA/FTC posture, and small teams cannot sustain backend infra — the category leader shut down citing exactly this |
 | 2026-07 | Single child in v1 | Multi-child is where scope creep starts and it is not why anyone opens the app |
 | 2026-07 | Sequential single-hue ramp for recovery, not a traffic light | Green-to-red measured 1.04:1 under deuteranopia, affecting ~8% of men |
+| 2026-07-26 | Parent-only and single child in v1 | The record is written by the parent, about the child, and the child cannot read or correct it. That is a real objection from the autistic community, not an oversight, and answering it properly changes the data model and the sharing rules. We are not deciding it before the rule 10 review happens. Deferred deliberately, with the options written down: `docs/BACKLOG.md`, "Child access to their own record" |

@@ -6,6 +6,26 @@ Format: date, decision, why, and what it rules out.
 
 ---
 
+## 2026-07-26 — The banned words stay banned, including the contested ones
+These remain banned in all user facing copy regardless of how contested the
+research found them to be: **tracker, tantrum, behavior as a noun for the child,
+manage, challenging behaviors, dysregulation, and the puzzle piece symbol.**
+
+The research disagreed with us on two of them. It found no evidence that
+**dysregulation** is criticised by autistic advocates, and it found that
+**challenging behavior** is widely used even in advocacy-adjacent literature
+with no named critique of the phrase itself. Both were rated weaker than the
+puzzle piece and functioning labels, which are unambiguous and settled.
+
+The rule stands anyway. We do not need a word to be provably harmful to decline
+to use it, and there is no cost to us in avoiding two words we do not need. The
+finding is recorded here so it cannot be used later to quietly reopen a settled
+decision. If someone wants to reopen this, they need a new argument, not this
+one.
+
+Rules out: relitigating any word on this list by citing the contested evidence
+above.
+
 ## 2026-07-26 — The summary strip is a retention requirement, not decoration
 Research on this category is consistent that the generated report cannot be the only payoff. Median 70% of users discontinue within 100 days, 53% of mood-tracking users stop inside 7 days, and a report by definition needs accumulated data. An app that gives nothing back until there is "enough" dies before its flagship feature ever runs. The last-30-days strip on the log is the cheap, always-current answer to "was any of this worth it".
 Rules out: removing the strip to simplify the log, or gating any feedback behind a minimum number of entries.

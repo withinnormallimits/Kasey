@@ -24,6 +24,7 @@ import {
 } from '../domain/types';
 import { rampColor, radius, space } from '../theme/tokens';
 import { Banner, Button, Chip, ConfirmSheet, Field, Label, sheetStyles } from '../ui/primitives';
+import { WhenField } from '../ui/WhenField';
 
 const QUICK_MINUTES = [5, 10, 20, 30, 45, 60, 90];
 
@@ -70,7 +71,8 @@ export function EntrySheet({
   onClose: () => void;
   onSaved: (saved: Entry, wasNew: boolean) => void;
 }) {
-  const { palette: p, settings, addEntry, editEntry, draft, setDraft, discardDraft } = useApp();
+  const { palette: p, settings, entries, addEntry, editEntry, draft, setDraft, discardDraft } =
+    useApp();
 
   const [local, setLocal] = useState<Draft>(initial ?? draft ?? emptyDraft());
   const [showMore, setShowMore] = useState(false);
@@ -79,20 +81,33 @@ export function EntrySheet({
 
   useEffect(() => {
     if (!visible) return;
-    setLocal(initial ?? draft ?? emptyDraft());
-    setShowMore(false);
+    const start = initial ?? draft ?? emptyDraft();
+    setLocal(start);
+    // Same rule as the prototype: the optional section starts open whenever
+    // there is already something in it, and whenever we are editing rather
+    // than creating. A parent correcting an entry should not have to hunt for
+    // the field they came to change.
+    const hasExtra =
+      !!start.note ||
+      start.behaviors.length > 0 ||
+      start.flagged ||
+      (!!start.source && start.source !== 'Home');
+    const isNew = !start.editingId;
+    setShowMore(!(!hasExtra && isNew));
   }, [visible, initial]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const patch = useCallback(
-    (d: Partial<Draft>) => {
-      setLocal((prev) => {
-        const next = { ...prev, ...d };
-        setDraft(next);
-        return next;
-      });
-    },
-    [setDraft],
-  );
+  const patch = useCallback((d: Partial<Draft>) => {
+    setLocal((prev) => ({ ...prev, ...d }));
+  }, []);
+
+  // Persisting the draft is a side effect and belongs here, not inside the
+  // setLocal updater. Calling setDraft from within an updater schedules an
+  // update to another component while this one is rendering, which React
+  // warns about and which can drop writes.
+  useEffect(() => {
+    if (!visible) return;
+    setDraft(local);
+  }, [local, visible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const dirty = useMemo(() => local.stage !== 0 || !!local.trigger || local.tools.length > 0, [local]);
   const canSave = local.stage !== 0;
@@ -130,11 +145,16 @@ export function EntrySheet({
 
       let saved: Entry;
       if (local.editingId) {
+        // created_at records when this was LOGGED and must survive an edit.
+        // `at` is when the thing happened and is the field being corrected.
+        // Overwriting created_at here would erase the audit trail that makes a
+        // backdated entry honest on the detail screen.
+        const original = entries.find((e) => e.id === local.editingId);
         const existing: Entry = {
           ...payload,
           id: local.editingId,
-          created_at: local.at,
-          updated_at: null,
+          created_at: original?.created_at ?? local.at,
+          updated_at: original?.updated_at ?? null,
         };
         await editEntry(existing);
         saved = existing;
@@ -364,6 +384,15 @@ export function EntrySheet({
               </Pressable>
             ) : (
               <View>
+                {/*
+                  First inside the optional section, as in the prototype.
+                  Defaults to now, so a parent logging in the moment never
+                  touches it. Rule 1 requires backdating to be exact, obvious,
+                  and always correctable, which is why it is also present when
+                  editing an existing entry.
+                */}
+                <WhenField value={local.at} onChange={(iso) => patch({ at: iso })} />
+
                 <View style={{ marginBottom: space.xl }}>
                   <Label style={{ marginBottom: 9 }}>Where</Label>
                   <View style={sheetStyles.row}>

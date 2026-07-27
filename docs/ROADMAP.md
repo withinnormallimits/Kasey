@@ -106,7 +106,7 @@ Register the developer accounts during M7, not here. Apple approval can take day
 ---
 
 ## Not in v1
-Multiple children. Accounts, sync, or cloud anything. Sharing infrastructure beyond a PDF. Notifications beyond one appointment-anchored reminder. Anything that predicts or explains rather than counts. Say no to all of these once and record it in `docs/PRODUCT.md`.
+Moved to `docs/BACKLOG.md`, which is now the single place deferred work lives.
 
 ---
 
