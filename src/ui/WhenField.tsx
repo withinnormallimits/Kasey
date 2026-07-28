@@ -47,7 +47,14 @@ export function WhenField({
     } else {
       next.setHours(picked.getHours(), picked.getMinutes(), 0, 0);
     }
-    onChange(toLocalISO(next));
+
+    // Logging is retrospective (PRODUCT.md rule 1), so a future timestamp is
+    // invalid data. maximumDate constrains the date wheel, but the time wheel
+    // has no equivalent, so picking 11:41pm at 8:42pm today would otherwise
+    // record something that has not happened yet. Clamp instead of rejecting,
+    // so the parent is not left with a control that silently refuses them.
+    const now = new Date();
+    onChange(toLocalISO(next.getTime() > now.getTime() ? now : next));
   };
 
   const box = {
@@ -96,8 +103,9 @@ export function WhenField({
         <DateTimePicker
           value={d}
           mode={mode}
-          // an episode cannot have happened in the future
-          maximumDate={mode === 'date' ? new Date() : undefined}
+          // an episode cannot have happened in the future. This covers the
+          // date wheel; the time wheel is clamped in onPicked above.
+          maximumDate={new Date()}
           onChange={onPicked}
           display={Platform.OS === 'ios' ? 'spinner' : 'default'}
         />

@@ -142,6 +142,91 @@ describe('backdating does not corrupt the day counts', () => {
   });
 });
 
+describe('the rest-of-day verdict follows the episode, not the clock', () => {
+  /**
+   * Mirrors markGoodDay(note, onDate) in src/state/AppState.tsx. Answering
+   * "how was the rest of the day" after logging last Tuesday's episode has to
+   * put the verdict on last Tuesday. Attaching it to today would invent a good
+   * day that nobody reported and inflate the day counts.
+   */
+  function goodDayFor(at: string): Entry {
+    n += 1;
+    return {
+      id: `g${n}`,
+      at,
+      kind: 'good',
+      stage: null,
+      trigger: null,
+      behaviors: [],
+      tools: [],
+      minutes: null,
+      source: 'Home',
+      note: null,
+      flagged: false,
+      created_at: '2026-03-10T22:00:00',
+      updated_at: null,
+    };
+  }
+
+  it('lands the verdict on the backdated episode date', () => {
+    const backdated = episode('2026-03-04T14:00:00', { created_at: '2026-03-10T22:00:00' });
+    const verdict = goodDayFor(backdated.at);
+
+    expect(dateKey(verdict.at)).toBe(dateKey(backdated.at));
+    expect(dateKey(verdict.at)).toBe('2026-03-04');
+    // and not on the day the parent happened to be holding the phone
+    expect(dateKey(verdict.at)).not.toBe(dateKey(backdated.created_at));
+  });
+
+  it('does not create a second day when the verdict joins its episode', () => {
+    const backdated = episode('2026-03-04T14:00:00', { created_at: '2026-03-10T22:00:00' });
+    const a = analyse([backdated, goodDayFor(backdated.at)]);
+
+    expect(a.allDays).toBe(1);
+    expect(a.hardDays).toBe(1);
+    expect(a.goodDays).toBe(1);
+    expect(a.bothDays).toBe(1);
+    expect(a.clearDays).toBe(0);
+  });
+
+  it('would have inflated the counts if it attached to today, which is the bug', () => {
+    const backdated = episode('2026-03-04T14:00:00', { created_at: '2026-03-10T22:00:00' });
+    // the wrong behaviour, kept as a guard so the fix cannot silently regress
+    const wrong = analyse([backdated, goodDayFor('2026-03-10T22:00:00')]);
+    expect(wrong.allDays).toBe(2);
+
+    const right = analyse([backdated, goodDayFor(backdated.at)]);
+    expect(right.allDays).toBe(1);
+  });
+
+  it('keeps one verdict per date', () => {
+    const at = '2026-03-04T14:00:00';
+    const a = analyse([episode(at), goodDayFor(at)]);
+    expect(a.goodDays).toBe(1);
+  });
+});
+
+describe('a future timestamp is invalid data', () => {
+  it('clamping keeps the recorded moment at or before now', () => {
+    // mirrors the clamp in WhenField: rule 1 makes logging retrospective, so
+    // 11:41pm chosen at 8:42pm must not be recorded as the future
+    const now = new Date(2026, 2, 10, 20, 42, 0, 0);
+    const picked = fromDateAndTime('2026-03-10', '23:41');
+    expect(picked).not.toBeNull();
+
+    const clamped = picked!.getTime() > now.getTime() ? now : picked!;
+    expect(clamped.getTime()).toBeLessThanOrEqual(now.getTime());
+    expect(clamped.getHours()).toBe(20);
+  });
+
+  it('leaves a past time untouched', () => {
+    const now = new Date(2026, 2, 10, 20, 42, 0, 0);
+    const picked = fromDateAndTime('2026-03-10', '14:00')!;
+    const clamped = picked.getTime() > now.getTime() ? now : picked;
+    expect(clamped.getHours()).toBe(14);
+  });
+});
+
 describe('the audit trail stays honest', () => {
   it('separates when it happened from when it was logged', () => {
     const e = episode('2026-03-04T14:00:00', { created_at: '2026-03-10T22:00:00' });

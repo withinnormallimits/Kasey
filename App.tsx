@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { dateKey } from './src/domain/dates';
 import { Draft, Entry } from './src/domain/types';
 import { EntryDetail } from './src/screens/EntryDetail';
 import { EntrySheet, draftFromEntry, emptyDraft } from './src/screens/EntrySheet';
@@ -29,6 +30,7 @@ function Shell() {
     settings,
     palette: p,
     theme,
+    entries,
     markGoodDay,
     goodDayToday,
     episodesToday,
@@ -41,7 +43,9 @@ function Shell() {
   const [sheetDraft, setSheetDraft] = useState<Draft | null>(null);
   const [detail, setDetail] = useState<Entry | null>(null);
   const [toast, setToast] = useState<{ msg: string; undo?: () => void } | null>(null);
-  const [askRestOfDay, setAskRestOfDay] = useState(false);
+  // Holds the `at` of the episode just saved, so the verdict lands on that
+  // episode's calendar date rather than today.
+  const [askRestOfDay, setAskRestOfDay] = useState<string | null>(null);
 
   if (!ready) {
     return (
@@ -119,34 +123,38 @@ function Shell() {
       </Screen>
 
       {tab === 'log' ? (
+        // left and right already set the width of an absolutely positioned
+        // box. Adding width 100% on top of that overrode them and pushed the
+        // right-hand button off screen by exactly the left inset. The outer
+        // box spans full width and centres; the inner row carries the max
+        // width and the padding.
         <View
           style={{
             position: 'absolute',
-            left: space.lg,
-            right: space.lg,
+            left: 0,
+            right: 0,
             bottom: insets.bottom + 72,
-            flexDirection: 'row',
-            gap: 9,
-            maxWidth: 460,
-            alignSelf: 'center',
-            width: '100%',
+            paddingHorizontal: space.lg,
+            alignItems: 'center',
           }}
         >
-          <Button
-            label={goodLabel}
-            tone="good"
-            onPress={() => void onGoodDay()}
-            style={{ flex: 1 }}
-            accessibilityHint="Marks today as a good day. You can undo it."
-          />
-          <Button
-            label="Something happened"
-            onPress={() => {
-              setSheetDraft(emptyDraft());
-              setSheetOpen(true);
-            }}
-            style={{ flex: 1.25 }}
-          />
+          <View style={{ flexDirection: 'row', gap: 9, width: '100%', maxWidth: 460 }}>
+            <Button
+              label={goodLabel}
+              tone="good"
+              onPress={() => void onGoodDay()}
+              style={{ flex: 1 }}
+              accessibilityHint="Marks today as a good day. You can undo it."
+            />
+            <Button
+              label="Something happened"
+              onPress={() => {
+                setSheetDraft(emptyDraft());
+                setSheetOpen(true);
+              }}
+              style={{ flex: 1.25 }}
+            />
+          </View>
         </View>
       ) : null}
 
@@ -193,8 +201,11 @@ function Shell() {
         visible={sheetOpen}
         initial={sheetDraft}
         onClose={() => setSheetOpen(false)}
-        onSaved={(_saved, wasNew) => {
-          if (wasNew && !goodDayToday) setAskRestOfDay(true);
+        onSaved={(saved, wasNew) => {
+          const alreadyJudged = entries.some(
+            (e) => e.kind === 'good' && dateKey(e.at) === dateKey(saved.at),
+          );
+          if (wasNew && !alreadyJudged) setAskRestOfDay(saved.at);
           else showToast('Saved');
         }}
       />
@@ -206,14 +217,16 @@ function Shell() {
         can both be true.
       */}
       <ConfirmSheet
-        visible={askRestOfDay}
+        visible={!!askRestOfDay}
         message="How was the rest of the day?"
         confirmLabel="Fine, actually"
         cancelLabel="Rough too"
-        onCancel={() => setAskRestOfDay(false)}
+        onCancel={() => setAskRestOfDay(null)}
         onConfirm={() => {
-          setAskRestOfDay(false);
-          void markGoodDay();
+          const on = askRestOfDay;
+          setAskRestOfDay(null);
+          // the verdict belongs to the episode's date, not today
+          if (on) void markGoodDay(undefined, on);
         }}
       />
 

@@ -39,8 +39,14 @@ interface AppStateValue {
   editEntry: (e: Entry) => Promise<void>;
   removeEntry: (id: string) => Promise<void>;
 
-  /** One tap, with undo. No streak, no guilt, ever. */
-  markGoodDay: (note?: string) => Promise<Entry | null>;
+  /**
+   * One tap, with undo. No streak, no guilt, ever.
+   *
+   * `onDate` is the calendar date the verdict belongs to. It defaults to
+   * today, but must be passed when the verdict follows a backdated episode,
+   * or the good day lands on the wrong date.
+   */
+  markGoodDay: (note?: string, onDate?: string) => Promise<Entry | null>;
   goodDayToday: Entry | null;
   episodesToday: Entry[];
 
@@ -139,14 +145,23 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   );
 
   const markGoodDay = useCallback(
-    async (note?: string) => {
+    async (note?: string, onDate?: string) => {
+      // The verdict belongs to the date the day happened, not the date the
+      // parent happened to be holding the phone. After a backdated episode,
+      // answering "how was the rest of the day" about last Tuesday has to
+      // land on last Tuesday.
+      const at = onDate ?? nowISO();
+      const key = dateKey(at);
+
       // one verdict per date. Tapping again edits the note rather than stacking.
-      if (goodDayToday) {
-        await editEntry({ ...goodDayToday, note: note ?? goodDayToday.note });
+      const existing = entries.find((e) => e.kind === 'good' && dateKey(e.at) === key);
+      if (existing) {
+        await editEntry({ ...existing, note: note ?? existing.note });
         return null;
       }
+
       return addEntry({
-        at: nowISO(),
+        at,
         kind: 'good',
         stage: null,
         trigger: null,
@@ -158,7 +173,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
         flagged: false,
       });
     },
-    [goodDayToday, addEntry, editEntry],
+    [entries, addEntry, editEntry],
   );
 
   const addChange = useCallback(async (c: Omit<Change, 'id'>) => {

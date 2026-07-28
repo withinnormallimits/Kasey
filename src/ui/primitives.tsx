@@ -224,6 +224,7 @@ export function Field({
   multiline,
   hint,
   keyboardType,
+  hideLabel,
 }: {
   label: string;
   value: string;
@@ -232,14 +233,23 @@ export function Field({
   multiline?: boolean;
   hint?: string;
   keyboardType?: 'default' | 'number-pad';
+  /**
+   * Keeps the label for screen readers but does not draw it. Used where the
+   * question is already the visible heading, as in onboarding, so a sighted
+   * parent does not read the same sentence twice while a screen reader user
+   * still gets the field labelled.
+   */
+  hideLabel?: boolean;
 }) {
   const p = usePalette();
   return (
     <View style={{ marginBottom: space.xl }}>
-      <Text style={{ fontSize: 13, fontWeight: '600', color: p.ink2, marginBottom: 8 }}>
-        {label}
-        {hint ? <Text style={{ fontWeight: '400', color: p.ink3 }}>{`  ${hint}`}</Text> : null}
-      </Text>
+      {hideLabel ? null : (
+        <Text style={{ fontSize: 13, fontWeight: '600', color: p.ink2, marginBottom: 8 }}>
+          {label}
+          {hint ? <Text style={{ fontWeight: '400', color: p.ink3 }}>{`  ${hint}`}</Text> : null}
+        </Text>
+      )}
       <TextInput
         accessibilityLabel={label}
         value={value}

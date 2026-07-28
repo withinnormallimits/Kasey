@@ -51,27 +51,66 @@ export async function sharePage(
     );
   }
 
-  // Rename to something a recipient can read in their downloads folder.
-  // printToFileAsync produces a random name, which lands in a teacher's inbox
-  // as an unidentifiable attachment.
+  // Relocating the file is NOT cosmetic on Android, which is what the earlier
+  // silent catch here got wrong.
+  //
+  // expo-print writes to cacheDir/Print/. expo-sharing then runs the path
+  // through isAllowedToRead, which under Expo Go is scoped to this app's own
+  // sandbox directory. cacheDir/Print/ sits outside that scope, so sharing is
+  // refused with "Not allowed to read file under given URL". Moving the file
+  // into Paths.cache is what brings it inside the readable scope. Swallowing a
+  // failure here produced a PDF that could never be shared, and an error
+  // message that pointed at the wrong step.
+  //
+  // The readable filename is a real benefit too: printToFileAsync generates a
+  // random name, which arrives in a teacher's inbox as an unidentifiable
+  // attachment.
+  let relocated = false;
+  let relocateError: unknown = null;
   try {
     const printed = new File(uri);
     const target = new File(Paths.cache, pageFileName(kind, settings));
     if (target.exists) target.delete();
     await printed.move(target);
     uri = printed.uri;
-  } catch {
-    // a readable filename is a nicety, not worth failing the share over
+    relocated = true;
+  } catch (e) {
+    relocateError = e;
+    // move can fail across storage boundaries. Copying leaves the original in
+    // place but still lands a readable copy inside the shareable scope.
+    try {
+      const source = new File(uri);
+      const target = new File(Paths.cache, pageFileName(kind, settings));
+      if (target.exists) target.delete();
+      await source.copy(target);
+      uri = target.uri;
+      relocated = true;
+    } catch {
+      // fall through with the original uri and let the share attempt report
+    }
   }
 
   if (!(await Sharing.isAvailableAsync())) return 'unavailable';
 
-  await Sharing.shareAsync(uri, {
-    mimeType: 'application/pdf',
-    dialogTitle:
-      kind === 'sitter' ? 'Send this to a sitter or teacher' : 'Send this to the doctor',
-    UTI: 'com.adobe.pdf',
-  });
+  try {
+    await Sharing.shareAsync(uri, {
+      mimeType: 'application/pdf',
+      dialogTitle:
+        kind === 'sitter' ? 'Send this to a sitter or teacher' : 'Send this to the doctor',
+      UTI: 'com.adobe.pdf',
+    });
+  } catch (e) {
+    // Surface the real reason. The previous code let this escape as an
+    // unrecognised error, so the screen reported a PDF build problem for what
+    // is actually a file permission problem one step later.
+    const detail = e instanceof Error ? e.message : 'Unknown problem.';
+    const context =
+      !relocated && relocateError instanceof Error
+        ? ` The file could not be moved into shareable storage: ${relocateError.message}`
+        : '';
+    throw new ShareError(`${detail}${context}`);
+  }
+
   return 'shared';
 }
 

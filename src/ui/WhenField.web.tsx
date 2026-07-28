@@ -37,7 +37,12 @@ export function WhenField({
 
   const commit = (dateStr: string, timeStr: string) => {
     const next = fromDateAndTime(dateStr, timeStr);
-    if (next) onChange(toLocalISO(next));
+    if (!next) return;
+    // Logging is retrospective, so a future timestamp is invalid data. The
+    // date input's max attribute stops a future date, but a time later today
+    // still slips through, so clamp to now.
+    const now = new Date();
+    onChange(toLocalISO(next.getTime() > now.getTime() ? now : next));
   };
 
   return (

@@ -121,8 +121,14 @@ export function Onboarding({ onDone }: { onDone: (goToPage: boolean) => void }) 
                         {q.hint}
                       </Text>
                     ) : null}
+                    {/*
+                      The question is already the heading above. The label is
+                      kept for screen readers only, as in the prototype, so it
+                      is not read twice by a sighted parent.
+                    */}
                     <Field
                       label={q.label}
+                      hideLabel
                       value={local[q.key]}
                       onChangeText={(v) => setLocal({ ...local, [q.key]: v })}
                       placeholder={q.placeholder}
@@ -227,18 +233,30 @@ export function Onboarding({ onDone }: { onDone: (goToPage: boolean) => void }) 
         }}
       >
         <View style={{ maxWidth: 460, width: '100%', alignSelf: 'center' }}>
-          <Button
-            label={
-              step === 0
-                ? 'Start'
-                : step > QUESTIONS.length
-                  ? 'Open my page'
-                  : step === QUESTIONS.length
-                    ? 'See my page'
-                    : 'Next'
-            }
-            onPress={advance}
-          />
+          <View style={{ flexDirection: 'row', gap: 9 }}>
+            {/* A parent who mistypes a name on step 1 needs a way back. */}
+            {step > 0 ? (
+              <Button
+                label="Back"
+                tone="quiet"
+                onPress={() => setStep(step - 1)}
+                style={{ flex: 1 }}
+              />
+            ) : null}
+            <Button
+              label={
+                step === 0
+                  ? 'Start'
+                  : step > QUESTIONS.length
+                    ? 'Open my page'
+                    : step === QUESTIONS.length
+                      ? 'See my page'
+                      : 'Next'
+              }
+              onPress={advance}
+              style={{ flex: step > 0 ? 1.6 : 1 }}
+            />
+          </View>
           {step <= QUESTIONS.length ? (
             <Pressable
               onPress={() => void finish(false)}
